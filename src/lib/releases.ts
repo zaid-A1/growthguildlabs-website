@@ -24,6 +24,8 @@ export interface ReleaseArtifact {
   executableName?: string;
   downloadUrl: string;
   directDownloadAvailable: boolean;
+  hostingStatus: "available" | "mirror_pending";
+  hostingNotice?: string;
   systemRequirements: string[];
   installationSteps: string[];
   releaseNotes: string[];
@@ -43,8 +45,11 @@ export const RELEASES: ReleaseArtifact[] = [
     fileSizeFormatted: "400.3 MB",
     sha256: "CF3314C87126BE06096AAF7FAEA91D7DEB54B664F7F9007D4EFFF14271F91137",
     executableName: "ULTRON2.exe",
-    downloadUrl: "/releases/ULTRON_2.0_Windows_x64.zip",
-    directDownloadAvailable: true,
+    downloadUrl: "#",
+    directDownloadAvailable: false,
+    hostingStatus: "mirror_pending",
+    hostingNotice:
+      "Packaged binary compiled and verified (400.3 MB). Awaiting public CDN/GitHub Releases mirror configuration (exceeds static host per-file limits). Direct link will activate when public mirror URL is attached.",
     systemRequirements: [
       "Windows 10 / 11 (64-bit)",
       "4 GB RAM minimum (8 GB recommended)",
@@ -52,7 +57,7 @@ export const RELEASES: ReleaseArtifact[] = [
       "Microphone and speaker for voice interface",
     ],
     installationSteps: [
-      "Download ULTRON_2.0_Windows_x64.zip to your computer.",
+      "Download ULTRON_2.0_Windows_x64.zip once public mirror goes live.",
       "Extract the entire ZIP archive to a folder of your choice.",
       "Open the folder and run ULTRON2.exe.",
       "The Quantum Core HUD desktop shell will launch automatically.",
@@ -79,6 +84,7 @@ export const RELEASES: ReleaseArtifact[] = [
     sha256: "079C0632E8900CC4AC059C5DE9D67ED7705481C2F113945BC3BA444A49D62499",
     downloadUrl: "/releases/ULTRON_2.0_Connect.apk",
     directDownloadAvailable: true,
+    hostingStatus: "available",
     systemRequirements: [
       "Android 8.0 (Oreo) or higher",
       "Camera permission (for QR pairing with desktop)",
@@ -111,8 +117,11 @@ export const RELEASES: ReleaseArtifact[] = [
     fileSizeFormatted: "228.7 MB",
     sha256: "22B9E290946A0EB8D862F065404541664DF27B19B038C42FF4AA6AA5BAF0CB6C",
     executableName: "JARVIS 2.0.exe",
-    downloadUrl: "/releases/JARVIS-2.0-Windows-x64.zip",
-    directDownloadAvailable: true,
+    downloadUrl: "#",
+    directDownloadAvailable: false,
+    hostingStatus: "mirror_pending",
+    hostingNotice:
+      "Packaged binary compiled and verified (228.7 MB). Awaiting public CDN/GitHub Releases mirror configuration (exceeds static host per-file limits). Direct link will activate when public mirror URL is attached.",
     systemRequirements: [
       "Windows 10 / 11 (64-bit)",
       "GPU with DirectX 11+ support for 3D avatar rendering",
@@ -120,7 +129,7 @@ export const RELEASES: ReleaseArtifact[] = [
       "Gemini API key for natural conversation",
     ],
     installationSteps: [
-      "Download JARVIS-2.0-Windows-x64.zip.",
+      "Download JARVIS-2.0-Windows-x64.zip once public mirror goes live.",
       "Extract the ZIP archive.",
       "Navigate into the 'JARVIS 2.0' folder and run 'JARVIS 2.0.exe'.",
       "Enter your Gemini API key in the configuration settings.",
@@ -147,6 +156,7 @@ export const RELEASES: ReleaseArtifact[] = [
     sha256: "55EBF0D2A2D3B1F0E48F42754FF98443D66F76F67CC6BC2936A6985D6981E001",
     downloadUrl: "/releases/JARVIS-release.apk",
     directDownloadAvailable: true,
+    hostingStatus: "available",
     systemRequirements: [
       "Android 8.0 (Oreo) or higher",
       "Microphone permission for local speech processing",
@@ -178,15 +188,19 @@ export const RELEASES: ReleaseArtifact[] = [
     fileSizeFormatted: "253.0 MB",
     sha256: "DD3FFFC791D0D0FDFC371D365AA7167D26D7B918443AA9683BB61DD2EAE4C78B",
     executableName: "FRIDAY.exe",
-    downloadUrl: "/releases/FRIDAY_AI_v1.0_Windows.zip",
-    directDownloadAvailable: true,
+    downloadUrl: "#",
+    directDownloadAvailable: false,
+    hostingStatus: "mirror_pending",
+    hostingNotice:
+      "Packaged binary compiled and verified (253.0 MB). Awaiting public CDN/GitHub Releases mirror configuration (exceeds static host per-file limits). Direct link will activate when public mirror URL is attached.",
     systemRequirements: [
       "Windows 10 / 11 (64-bit)",
       "Working microphone and audio output",
       "Gemini API key (obtainable free from Google AI Studio)",
     ],
     installationSteps: [
-      "Download FRIDAY_AI_v1.0_Windows.zip and extract it.",
+      "Download FRIDAY_AI_v1.0_Windows.zip once public mirror goes live.",
+      "Extract the ZIP archive.",
       "Open the 'FRIDAY/config' folder and open 'api_keys.json' in Notepad.",
       "Paste your Gemini API key: {\"gemini_api_key\": \"YOUR_KEY\", \"os_system\": \"windows\"} and save.",
       "Double-click FRIDAY.exe to launch.",

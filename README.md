@@ -1,72 +1,62 @@
-# Growth Guild Labs — Next-Level Website & Application Releases
+# Growth Guild Labs — Official Website
 
-> **“The future is built. Not waited for.”**
+> **"The future is built. Not waited for."**
 >
 > Official website for **Growth Guild Labs** — an independent technology lab building five working AI assistants and companion applications, founded by **Zaid Uddin** and co-founded by **Idrees Uddin**.
 
 ---
 
-## 🚀 Quick Deployment Guide: Which Folder to Upload?
+## 🚀 Deployment — Netlify
 
-### 📁 Uploading to Netlify (Drag & Drop)
+This project is deployed exclusively on **Netlify** as a static export.
 
-If you are uploading manually to Netlify via the [Netlify Drop](https://app.netlify.com/drop) dashboard:
+### Option A — Recommended: GitHub → Netlify (Auto-Deploy)
 
-> ### **👉 UPLOAD THE `out` FOLDER**
->
-> 1. Run the static export command in your terminal:
->    ```bash
->    npm run export
->    ```
-> 2. Open the project folder in File Explorer:
->    `c:\Users\Admin\Downloads\growth-guild-labs\`
-> 3. Locate the **`out`** folder.
-> 4. Drag and drop the **`out`** folder directly into the Netlify Drop box.
->
-> *(Do **not** upload `.next`, `public`, or the root workspace folder. Only upload `out`.)*
+1. Push this repository to GitHub.
+2. Log in to [Netlify](https://app.netlify.com) → **Add new site → Import an existing project**.
+3. Connect your GitHub account and select this repository.
+4. Configure the build settings:
+   - **Build command**: `npm run export`
+   - **Publish directory**: `out`
+5. Under **Environment variables**, add:
+   - `NEXT_PUBLIC_SITE_URL` → your production domain (e.g. `https://growthguildlabs.netlify.app`)
+6. Click **Deploy site**. Netlify will build and publish automatically on every push.
 
----
-
-### 🌐 Deploying to Netlify (via Git Repository)
-
-If your project is connected to a GitHub/GitLab repository on Netlify:
-* **Build command**: `npm run export`
-* **Publish directory**: `out`
-* **Node.js version**: `20` (configured automatically via `netlify.toml`)
-* **Environment variables**:
-  * `NEXT_PUBLIC_SITE_URL`: `https://your-custom-domain.com`
+> Node.js version `20` is configured automatically via `netlify.toml`.
 
 ---
 
-### ⚡ Deploying to Vercel (Recommended Primary Target)
+### Option B — Manual: Netlify Drop (Drag & Drop)
 
-Vercel provides native Next.js server features and edge routing:
-1. Connect this repository to Vercel.
-2. Settings:
-   * **Framework Preset**: Next.js
-   * **Root Directory**: `./` (default)
-   * **Build Command**: `npm run build`
-   * **Output Directory**: `.next` (default)
-3. Add Environment Variable:
-   * `NEXT_PUBLIC_SITE_URL`: `https://your-production-domain.com`
+1. In your terminal, generate the production export:
+   ```powershell
+   npm run export
+   ```
+2. Open File Explorer and navigate to the project folder:
+   ```
+   c:\Users\Admin\Downloads\growth-guild-labs\
+   ```
+3. Locate the **`out`** folder inside the project.
+4. Go to [https://app.netlify.com/drop](https://app.netlify.com/drop).
+5. Drag and drop the **`out`** folder directly onto the Netlify Drop page.
 
-> ⚠️ **Important Boundary Rule**: Do not deploy directly to or overwrite the old legacy site at `https://growthguildlabs.netlify.app/` without explicit authorization. That reference deployment remains untouched.
+> ⚠️ Upload **only the `out` folder**. Do **not** upload `.next`, `public`, `src`, or the root project folder.
 
 ---
 
-## 📦 Verified Application Releases (The 5 Applications)
+## 📦 Verified Application Releases
 
-All 5 applications have confirmed, functional releases compiled by Growth Guild Labs. The Download Centre (`/downloads`) provides direct download cards, verified SHA-256 checksums, and step-by-step installation guides:
+All 5 applications have confirmed, functional releases compiled by Growth Guild Labs. The Download Centre (`/downloads`) provides direct download cards, verified SHA-256 checksums, and installation guides.
 
 | Application | Platform | Package File | Size | Verified SHA-256 Checksum |
 |---|---|---|---|---|
-| **ULTRON 2.0** | Windows (x64) | `ULTRON_2.0_Windows_x64.zip` | 400.3 MB | `CF3314C87126BE06096AAF7FAEA91D7DEB54B664F7F9007D4EFFF14271F91137` |
+| **ULTRON 2.0** | Windows x64 | `ULTRON_2.0_Windows_x64.zip` | 400.3 MB | `CF3314C87126BE06096AAF7FAEA91D7DEB54B664F7F9007D4EFFF14271F91137` |
 | **ULTRON 2.0 Connector** | Android | `ULTRON_2.0_Connect.apk` | 26.87 MB | `079C0632E8900CC4AC059C5DE9D67ED7705481C2F113945BC3BA444A49D62499` |
-| **JARVIS 2.0** | Windows (x64) | `JARVIS-2.0-Windows-x64.zip` | 228.7 MB | `22B9E290946A0EB8D862F065404541664DF27B19B038C42FF4AA6AA5BAF0CB6C` |
+| **JARVIS 2.0** | Windows x64 | `JARVIS-2.0-Windows-x64.zip` | 228.7 MB | `22B9E290946A0EB8D862F065404541664DF27B19B038C42FF4AA6AA5BAF0CB6C` |
 | **JARVIS 2.0 Phone** | Android | `JARVIS-release.apk` | 94.82 MB | `55EBF0D2A2D3B1F0E48F42754FF98443D66F76F67CC6BC2936A6985D6981E001` |
-| **F.R.I.D.A.Y. AI** | Windows (x64) | `FRIDAY_AI_v1.0_Windows.zip` | 253.0 MB | `DD3FFFC791D0D0FDFC371D365AA7167D26D7B918443AA9683BB61DD2EAE4C78B` |
+| **F.R.I.D.A.Y. AI** | Windows x64 | `FRIDAY_AI_v1.0_Windows.zip` | 253.0 MB | `DD3FFFC791D0D0FDFC371D365AA7167D26D7B918443AA9683BB61DD2EAE4C78B` |
 
-### 🔍 How to Verify Download Checksums
+### 🔍 Verify a Checksum
 
 **Windows (PowerShell):**
 ```powershell
@@ -82,9 +72,12 @@ sha256sum ULTRON_2.0_Windows_x64.zip
 
 ## 🗄️ Large Binary Hosting Advisory
 
-* **Android APKs** (`ULTRON_2.0_Connect.apk` at 26.87 MB and `JARVIS-release.apk` at 94.82 MB) are included inside `public/releases/` and exported to `out/releases/`.
-* **Windows ZIP archives** (228 MB – 400 MB) exceed the standard 25 MB/file limit of static hosts and 100 MB Git/Vercel thresholds.
-* For production web hosting, upload the 3 Windows ZIPs to **GitHub Releases**, **Cloudflare R2**, or **Google Drive**, and update their `downloadUrl` properties in `src/lib/releases.ts`.
+- **Android APKs** (`ULTRON_2.0_Connect.apk` — 26.87 MB, `JARVIS-release.apk` — 94.82 MB) are included in `public/releases/` and exported to `out/releases/`. These are directly downloadable from the live site.
+- **Windows ZIP archives** (228 MB – 400 MB) exceed Netlify's 25 MB per-file limit for static hosting. They must be hosted externally:
+  - Upload the 3 Windows ZIPs to **GitHub Releases**, **Cloudflare R2**, or **Google Drive**.
+  - Update their `downloadUrl` values in [`src/lib/releases.ts`](./src/lib/releases.ts).
+  - Change `hostingStatus` from `"mirror_pending"` to `"available"` in the same file.
+- Until external hosting is configured, the Download Centre shows an honest **"Public Mirror Pending"** state for those 3 packages — no fake buttons.
 
 ---
 
@@ -97,16 +90,13 @@ npm install
 # Start local development server (http://localhost:3000)
 npm run dev
 
-# Full production build (Next.js App Router for Vercel / Node)
-npm run build
-
-# Static export build (generates out/ folder for Netlify)
+# Static export — generates the out/ folder for Netlify deployment
 npm run export
 
-# Type checking
+# TypeScript type checking
 npm run typecheck
 
-# Linting
+# ESLint
 npm run lint
 ```
 
@@ -143,16 +133,63 @@ src/
     └── seo.ts                    # Dynamic OpenGraph, Twitter card & metadata helpers
 ```
 
+### All Generated Routes (19 total)
+
+| Route | File in `out/` |
+|---|---|
+| `/` | `out/index.html` |
+| `/about` | `out/about/index.html` |
+| `/downloads` | `out/downloads/index.html` |
+| `/ecosystem` | `out/ecosystem/index.html` |
+| `/lab-notes` | `out/lab-notes/index.html` |
+| `/feedback` | `out/feedback/index.html` |
+| `/privacy` | `out/privacy/index.html` |
+| `/products/ultron-2` | `out/products/ultron-2/index.html` |
+| `/products/ultron-connector` | `out/products/ultron-connector/index.html` |
+| `/products/jarvis-2` | `out/products/jarvis-2/index.html` |
+| `/products/jarvis-phone` | `out/products/jarvis-phone/index.html` |
+| `/products/friday-ai` | `out/products/friday-ai/index.html` |
+| `/404` | `out/404/index.html` |
+| (+ manifests, sitemap, robots, icons) | Static files at root of `out/` |
+
+---
+
+## ⚙️ Netlify Configuration (`netlify.toml`)
+
+```toml
+[build]
+  command = "npm run export"
+  publish = "out"
+
+[build.environment]
+  NODE_VERSION = "20"
+```
+
+Security headers, cache rules, and redirect fallbacks are pre-configured in `netlify.toml`.
+
 ---
 
 ## 👥 Leadership & Identity
 
-* **Zaid Uddin** — CEO & Founder
-* **Idrees Uddin** — Co-founder
-* **Tagline**: *Build More. Grow Together.*
-* **Hero Headline**: *THE FUTURE IS BUILT. NOT WAITED FOR.*
-* **Official Socials**:
-  * Instagram: [@growthguild_189](https://www.instagram.com/growthguild_189/)
-  * YouTube: [@growthguildlabs189](https://youtube.com/@growthguildlabs189)
-  * Threads: [@growthguild_189](https://www.threads.com/@growthguild_189/)
-  * Facebook: [Growth Guild Labs Page](https://www.facebook.com/share/19MHYoVmAh/)
+- **Zaid Uddin** — CEO & Founder
+- **Idrees Uddin** — Co-founder
+- **Tagline**: *Build More. Grow Together.*
+- **Hero Headline**: *THE FUTURE IS BUILT. NOT WAITED FOR.*
+- **Official Socials**:
+  - Instagram: [@growthguild_189](https://www.instagram.com/growthguild_189/)
+  - YouTube: [@growthguildlabs189](https://youtube.com/@growthguildlabs189)
+  - Threads: [@growthguild_189](https://www.threads.com/@growthguild_189/)
+  - Facebook: [Growth Guild Labs Page](https://www.facebook.com/share/19MHYoVmAh/)
+
+---
+
+## 🛡️ Brand Palette
+
+| Token | Hex | Usage |
+|---|---|---|
+| Background | `#03090D` | Page background |
+| Cyan | `#00E5FF` | Primary accent, ULTRON brand |
+| Green | `#39FF65` | JARVIS brand, success states |
+| Foreground | `#F3FAFC` | Body text |
+
+**Fonts:** Sora (display), Inter (body), JetBrains Mono (monospace)

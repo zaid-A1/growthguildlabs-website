@@ -82,7 +82,7 @@ export function DownloadCenter({ releases }: { releases: ReleaseArtifact[] }) {
                 {/* Left Column: Product info, image, specs */}
                 <div className="flex flex-col justify-between gap-6">
                   <div>
-                    <div className="flex items-center gap-3">
+                    <div className="flex flex-wrap items-center gap-3">
                       <span
                         className="spec-chip font-bold"
                         style={{ color: accent.color, borderColor: `${accent.color}55` }}
@@ -91,6 +91,15 @@ export function DownloadCenter({ releases }: { releases: ReleaseArtifact[] }) {
                       </span>
                       <span className="spec-chip">v{release.version}</span>
                       <span className="spec-chip font-mono">{release.fileSizeFormatted}</span>
+                      {release.directDownloadAvailable ? (
+                        <span className="spec-chip font-mono text-neon-green border-neon-green/40">
+                          ● DIRECT DOWNLOAD
+                        </span>
+                      ) : (
+                        <span className="spec-chip font-mono text-[#ffb300] border-[#ffb300]/40">
+                          ⏳ MIRROR PENDING
+                        </span>
+                      )}
                     </div>
 
                     <div className="mt-4 flex items-center gap-4">
@@ -144,30 +153,51 @@ export function DownloadCenter({ releases }: { releases: ReleaseArtifact[] }) {
                   </div>
 
                   {/* Actions: Download Button & Product Page */}
-                  <div className="flex flex-wrap items-center gap-4">
-                    <a
-                      href={release.downloadUrl}
-                      download={release.fileName}
-                      className="group/btn relative inline-flex items-center justify-center gap-3 rounded-full px-7 py-3.5 font-mono text-[0.78rem] font-semibold uppercase tracking-[0.22em] text-ice-white transition-all duration-300"
-                      style={{
-                        background: `${accent.color}1f`,
-                        border: `1px solid ${accent.color}88`,
-                        boxShadow: `0 0 24px ${accent.color}22`,
-                      }}
-                    >
-                      <span>Download {release.fileName.endsWith(".apk") ? "APK" : "ZIP"}</span>
-                      <span className="font-mono text-xs transition-transform duration-300 group-hover/btn:translate-y-0.5">
-                        ↓
-                      </span>
-                    </a>
+                  <div className="flex flex-col gap-3">
+                    {release.hostingNotice && (
+                      <div className="rounded-xl border border-[#ffb300]/30 bg-[#ffb300]/10 p-3.5 text-[12.5px] leading-relaxed text-mist">
+                        <span className="font-mono text-micro font-bold uppercase tracking-wider text-[#ffb300] block mb-1">
+                          HOSTING ADVISORY
+                        </span>
+                        {release.hostingNotice}
+                      </div>
+                    )}
 
-                    <Link
-                      href={`/products/${release.productId}`}
-                      className="inline-flex items-center gap-2 font-mono text-[0.75rem] uppercase tracking-[0.2em] text-mist transition-colors hover:text-ice-white"
-                    >
-                      <span>Product profile</span>
-                      <span aria-hidden="true">→</span>
-                    </Link>
+                    <div className="flex flex-wrap items-center gap-4">
+                      {release.directDownloadAvailable ? (
+                        <a
+                          href={release.downloadUrl}
+                          download={release.fileName}
+                          className="group/btn relative inline-flex items-center justify-center gap-3 rounded-full px-7 py-3.5 font-mono text-[0.78rem] font-semibold uppercase tracking-[0.22em] text-ice-white transition-all duration-300"
+                          style={{
+                            background: `${accent.color}1f`,
+                            border: `1px solid ${accent.color}88`,
+                            boxShadow: `0 0 24px ${accent.color}22`,
+                          }}
+                        >
+                          <span>Download {release.fileName}</span>
+                          <span className="font-mono text-xs transition-transform duration-300 group-hover/btn:translate-y-0.5">
+                            ↓
+                          </span>
+                        </a>
+                      ) : (
+                        <div
+                          className="inline-flex items-center gap-2.5 rounded-full px-6 py-3.5 font-mono text-[0.74rem] uppercase tracking-wider text-muted-grey border border-hairline bg-void/60 cursor-not-allowed"
+                          title="This large package is waiting for public mirror configuration."
+                        >
+                          <span>Public Mirror Pending ({release.fileSizeFormatted})</span>
+                          <span className="text-xs">⏳</span>
+                        </div>
+                      )}
+
+                      <Link
+                        href={`/products/${release.productId}`}
+                        className="inline-flex items-center gap-2 font-mono text-[0.75rem] uppercase tracking-[0.2em] text-mist transition-colors hover:text-ice-white"
+                      >
+                        <span>Product profile</span>
+                        <span aria-hidden="true">→</span>
+                      </Link>
+                    </div>
                   </div>
                 </div>
 

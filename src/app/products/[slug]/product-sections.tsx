@@ -665,6 +665,15 @@ export function ProductDownloadSection({
                   </span>
                   <span className="spec-chip">v{release.version}</span>
                   <span className="spec-chip font-mono">{release.fileSizeFormatted}</span>
+                  {release.directDownloadAvailable ? (
+                    <span className="spec-chip font-mono text-neon-green border-neon-green/40">
+                      ● READY TO DOWNLOAD
+                    </span>
+                  ) : (
+                    <span className="spec-chip font-mono text-[#ffb300] border-[#ffb300]/40">
+                      ⏳ MIRROR PENDING
+                    </span>
+                  )}
                 </div>
 
                 <h2 className="mt-5 font-display text-[clamp(1.9rem,3.2vw,3rem)] font-bold text-ice-white">
@@ -690,23 +699,43 @@ export function ProductDownloadSection({
                 </code>
               </div>
 
+              {/* Hosting Advisory if mirror pending */}
+              {release.hostingNotice && (
+                <div className="rounded-xl border border-[#ffb300]/30 bg-[#ffb300]/10 p-4 text-[13px] leading-relaxed text-mist">
+                  <span className="font-mono text-micro font-bold uppercase tracking-wider text-[#ffb300] block mb-1">
+                    PUBLIC MIRROR STATUS
+                  </span>
+                  {release.hostingNotice}
+                </div>
+              )}
+
               {/* CTA row */}
               <div className="flex flex-wrap items-center gap-4">
-                <a
-                  href={release.downloadUrl}
-                  download={release.fileName}
-                  className="group/btn relative inline-flex items-center justify-center gap-3 rounded-full px-8 py-4 font-mono text-[0.82rem] font-bold uppercase tracking-[0.22em] text-ice-white transition-all duration-300"
-                  style={{
-                    background: `${accent.color}26`,
-                    border: `1px solid ${accent.color}`,
-                    boxShadow: `0 0 32px ${accent.color}40`,
-                  }}
-                >
-                  <span>Download {release.fileName}</span>
-                  <span className="font-mono text-sm transition-transform duration-300 group-hover/btn:translate-y-0.5">
-                    ↓
-                  </span>
-                </a>
+                {release.directDownloadAvailable ? (
+                  <a
+                    href={release.downloadUrl}
+                    download={release.fileName}
+                    className="group/btn relative inline-flex items-center justify-center gap-3 rounded-full px-8 py-4 font-mono text-[0.82rem] font-bold uppercase tracking-[0.22em] text-ice-white transition-all duration-300"
+                    style={{
+                      background: `${accent.color}26`,
+                      border: `1px solid ${accent.color}`,
+                      boxShadow: `0 0 32px ${accent.color}40`,
+                    }}
+                  >
+                    <span>Download {release.fileName}</span>
+                    <span className="font-mono text-sm transition-transform duration-300 group-hover/btn:translate-y-0.5">
+                      ↓
+                    </span>
+                  </a>
+                ) : (
+                  <div
+                    className="inline-flex items-center gap-2.5 rounded-full px-7 py-4 font-mono text-[0.8rem] uppercase tracking-wider text-muted-grey border border-hairline bg-void/60 cursor-not-allowed"
+                    title="Awaiting public mirror configuration."
+                  >
+                    <span>Public Mirror Pending ({release.fileSizeFormatted})</span>
+                    <span className="text-xs">⏳</span>
+                  </div>
+                )}
 
                 <Link
                   href="/downloads"
