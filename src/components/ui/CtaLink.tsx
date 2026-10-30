@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useCallback, type ReactNode } from "react";
 import { cn } from "@/lib/utils";
+import { sound } from "@/lib/soundFx";
 
 type CtaVariant = "primary" | "secondary" | "ghost";
 
@@ -73,6 +74,14 @@ export function CtaLink({
     e.currentTarget.style.setProperty("--mag-y", "0px");
   }, []);
 
+  const onPointerEnter = useCallback(() => {
+    sound.play("hover");
+  }, []);
+
+  const onClick = useCallback(() => {
+    sound.play("click");
+  }, []);
+
   const inner = (
     <>
       <span className="label">{children}</span>
@@ -81,7 +90,7 @@ export function CtaLink({
       </span>
     </>
   );
-  const handlers = { onPointerMove, onPointerLeave };
+  const handlers = { onPointerMove, onPointerLeave, onPointerEnter, onClick };
 
   if (external) {
     return (

@@ -3,10 +3,13 @@ import { CtaLink } from "@/components/ui/CtaLink";
 import { Reveal } from "@/components/ui/Reveal";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { ProductCard } from "@/components/ui/ProductCard";
-import { SocialLinks } from "@/components/ui/SocialLinks";
 import { CinematicJourney } from "@/components/journey/CinematicJourney";
 import { HeroSection } from "@/components/HeroSection";
 import { SceneRail, type SceneStop } from "@/components/fx/SceneRail";
+import { TechMarquee } from "@/components/ui/TechMarquee";
+import { TerminalConsole } from "@/components/ui/TerminalConsole";
+import { SocialShowcase } from "@/components/ui/SocialShowcase";
+import { AnimatedCounter } from "@/components/ui/InteractiveElements";
 import { PRODUCTS } from "@/lib/products";
 import { SITE } from "@/lib/site";
 import { buildMetadata } from "@/lib/seo";
@@ -79,13 +82,12 @@ export default function HomePage() {
               whose skills grow one file at a time.
             </p>
             <p className="max-w-2xl text-[15px] leading-relaxed text-muted-grey">
-              All five builds are now packaged and available for direct
-              download. The{" "}
+              All five builds are packaged and verified. The{" "}
               <a href="/downloads" className="text-cyan-electric underline underline-offset-2 hover:text-neon-green transition-colors">
                 Download Centre
               </a>{" "}
-              carries verified SHA-256 checksums and step-by-step installation
-              instructions for every release.
+              carries verified SHA-256 checksums, downloadable APKs, and step-by-step
+              installation instructions.
             </p>
           </Reveal>
         </Chapter>
@@ -119,7 +121,7 @@ export default function HomePage() {
               Built with real parts:
               <span className="block text-mist">
                 PyQt6 shells, Gemini live voice, Vosk offline speech,
-                three.js HUDs, MCP-structured tool calls.
+                three.js HUDs, FastMCP-structured tool calls.
               </span>
             </h2>
             <p className="max-w-xl text-lg leading-relaxed text-mist">
@@ -173,6 +175,9 @@ export default function HomePage() {
         <SceneRail scenes={SCENES} />
       </CinematicJourney>
 
+      {/* ── Continuous Tech Marquee Strip ───────────────────────────────── */}
+      <TechMarquee />
+
       {/* ── Solid-background sections below the journey ─────────────────── */}
       <div className="relative z-10 bg-void">
         {/* Ecosystem preview */}
@@ -182,7 +187,7 @@ export default function HomePage() {
               <SectionHeading
                 eyebrow="THE ECOSYSTEM"
                 title="Five applications. One directory."
-                lead="Each card opens a complete profile — what it does, what it is built from, and exactly how far it can be used today. Availability is stated only as far as it is verified."
+                lead="Each card opens a complete profile — what it does, what it is built from, and exactly how far it can be used today. Availability is stated honestly with verified SHA-256 manifests."
               />
             </Reveal>
             <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -226,33 +231,46 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* ── Stats band ── */}
-        <section className="border-t border-hairline py-16">
+        {/* ── Interactive Architecture Terminal Sandbox ── */}
+        <section className="border-t border-hairline py-20 bg-void/50">
           <div className="container-guild">
-            <Reveal className="grid grid-cols-2 gap-6 sm:grid-cols-4">
-              {[
-                { value: "5", label: "AI Applications", color: "#00e5ff" },
-                { value: "2", label: "Platforms", color: "#39ff65" },
-                { value: "56+", label: "Tool Modules", color: "#ffb300" },
-                { value: "1", label: "Independent Guild", color: "#7c5cff" },
-              ].map((stat) => (
-                <div key={stat.label} className="panel flex flex-col items-center gap-2 p-6 text-center">
-                  <span
-                    className="font-display text-[clamp(2rem,3.5vw,3rem)] font-bold leading-none"
-                    style={{ color: stat.color, textShadow: `0 0 24px ${stat.color}55` }}
-                  >
-                    {stat.value}
-                  </span>
-                  <span className="font-mono text-[0.65rem] uppercase tracking-[0.28em] text-muted-grey">
-                    {stat.label}
-                  </span>
-                </div>
-              ))}
+            <Reveal className="mb-10 flex flex-col gap-4">
+              <span className="eyebrow">INTERACTIVE TELEMETRY SANDBOX</span>
+              <h2 className="font-display text-title text-ice-white">
+                Inspect the system in real time.
+              </h2>
+              <p className="max-w-2xl text-mist">
+                Query our live node terminal. Type diagnostic queries or click the quick tags to inspect
+                PyQt6 shell architecture, Vosk offline ASR engines, FastMCP tool pipelines, and release cryptographic hashes.
+              </p>
+            </Reveal>
+            <Reveal delay={100}>
+              <TerminalConsole />
             </Reveal>
           </div>
         </section>
 
-        {/* People */}
+        {/* ── Stats band with Animated Counter ── */}
+        <section className="border-t border-hairline py-16">
+          <div className="container-guild">
+            <Reveal className="grid grid-cols-2 gap-6 sm:grid-cols-4">
+              <div className="panel flex flex-col items-center gap-2 p-6 text-center">
+                <AnimatedCounter value={5} label="AI Applications" color="#00e5ff" />
+              </div>
+              <div className="panel flex flex-col items-center gap-2 p-6 text-center">
+                <AnimatedCounter value={2} label="Platforms (Win & Android)" color="#39ff65" />
+              </div>
+              <div className="panel flex flex-col items-center gap-2 p-6 text-center">
+                <AnimatedCounter value={56} label="FastMCP Tool Modules" suffix="+" color="#ffb300" />
+              </div>
+              <div className="panel flex flex-col items-center gap-2 p-6 text-center">
+                <AnimatedCounter value={100} label="Independent Guild" suffix="%" color="#7c5cff" />
+              </div>
+            </Reveal>
+          </div>
+        </section>
+
+        {/* People Behind Growth Guild Labs */}
         <section className="border-t border-hairline py-24 sm:py-28">
           <div className="container-guild grid gap-12 lg:grid-cols-[1fr_1.1fr]">
             <Reveal>
@@ -261,38 +279,68 @@ export default function HomePage() {
                 title="Two people, one guild."
                 lead="Growth Guild Labs is an independent personal software project. No corporate backstory is invented here — this is simply who builds what you have just seen."
               />
-              <div className="mt-8">
-                <SocialLinks />
+              <div className="mt-8 flex flex-col gap-4">
+                <p className="font-mono text-micro uppercase tracking-[0.28em] text-cyan-electric">
+                  CONNECT WITH THE FOUNDERS ACROSS OFFICIAL CHANNELS
+                </p>
+                <CtaLink href="/about" variant="secondary" ariaLabel="Read more about our founding story">
+                  Read the founding vision
+                </CtaLink>
               </div>
             </Reveal>
             <Reveal delay={120} className="grid gap-5 sm:grid-cols-2">
               {[
-                { name: "Zaid Uddin", note: "Founder" },
-                { name: "Idrees Uddin", note: "Co-founder" },
-              ].map((person, i) => (
-                <div key={person.name} className="panel flex flex-col justify-between gap-10 p-7">
-                  <span
-                    aria-hidden="true"
-                    className="grid size-12 place-items-center rounded-xl border border-cyan-electric/40 bg-cyan-electric/10 font-display text-lg font-bold text-cyan-electric"
-                  >
-                    {person.name
-                      .split(" ")
-                      .map((w) => w[0])
-                      .join("")}
-                  </span>
+                { name: "Zaid Uddin", role: "CEO & Founder", desc: "Lead system architect, PyQt6 core designer, and AI voice pipeline builder." },
+                { name: "Idrees Uddin", role: "Co-founder", desc: "Systems engineering, companion gateway bridging, and hardware testing lead." },
+              ].map((person) => (
+                <div key={person.name} className="panel flex flex-col justify-between gap-8 p-7 border border-hairline hover:border-cyan-electric/40 transition-colors">
+                  <div className="flex items-center justify-between">
+                    <span
+                      aria-hidden="true"
+                      className="grid size-12 place-items-center rounded-xl border border-cyan-electric/40 bg-cyan-electric/10 font-display text-lg font-bold text-cyan-electric"
+                    >
+                      {person.name
+                        .split(" ")
+                        .map((w) => w[0])
+                        .join("")}
+                    </span>
+                    <span className="font-mono text-[0.6rem] text-cyan-electric border border-cyan-electric/30 px-2 py-0.5 rounded-full">
+                      VERIFIED BUILDER
+                    </span>
+                  </div>
                   <div>
                     <p className="font-display text-xl text-ice-white">{person.name}</p>
-                    <p className="mt-1.5 font-mono text-micro uppercase tracking-[0.26em] text-muted-grey">
-                      {person.note}
+                    <p className="mt-1 font-mono text-micro uppercase tracking-[0.26em] text-cyan-electric">
+                      {person.role}
+                    </p>
+                    <p className="mt-3 text-xs leading-relaxed text-muted-grey">
+                      {person.desc}
                     </p>
                   </div>
-                  <p className="text-[13px] leading-relaxed text-muted-grey">
-                    {i === 0
-                      ? "Named founder inside the shipped product identity files."
-                      : "Named co-founder inside the shipped product identity files."}
-                  </p>
+                  <div className="border-t border-hairline pt-3 font-mono text-[0.62rem] text-muted-grey">
+                    GROWTH GUILD LABS // LEADERSHIP
+                  </div>
                 </div>
               ))}
+            </Reveal>
+          </div>
+        </section>
+
+        {/* ── Official Social Broadcast Hubs ── */}
+        <section className="border-t border-hairline py-20 bg-void/60">
+          <div className="container-guild">
+            <Reveal className="mb-10 flex flex-col gap-4">
+              <span className="eyebrow">OFFICIAL BROADCAST CHANNELS</span>
+              <h2 className="font-display text-title text-ice-white">
+                Follow the live evolution.
+              </h2>
+              <p className="max-w-2xl text-mist">
+                Real engineering progress, release previews, UI demonstrations, and live walkthroughs. 
+                Follow Growth Guild Labs on all verified social media platforms.
+              </p>
+            </Reveal>
+            <Reveal delay={120}>
+              <SocialShowcase />
             </Reveal>
           </div>
         </section>

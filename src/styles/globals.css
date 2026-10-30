@@ -93,6 +93,14 @@
     from { transform: translateX(-100%); }
     to { transform: translateX(100%); }
   }
+  @keyframes soundbar {
+    0%, 100% { transform: scaleY(0.25); }
+    50% { transform: scaleY(1); }
+  }
+  @keyframes marquee {
+    0% { transform: translateX(0%); }
+    100% { transform: translateX(-33.333333%); }
+  }
 }
 
 @layer base {

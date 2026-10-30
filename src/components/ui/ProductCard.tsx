@@ -5,6 +5,7 @@ import Link from "next/link";
 import { ACCENTS, type Product } from "@/lib/products";
 import { cn } from "@/lib/utils";
 import { Tilt } from "@/components/ui/Tilt";
+import { sound } from "@/lib/soundFx";
 
 interface ProductCardProps {
   product: Product;
@@ -24,6 +25,8 @@ export function ProductCard({ product, className, priority }: ProductCardProps) 
     <Tilt className="h-full" max={3}>
       <Link
         href={`/products/${product.id}`}
+        onMouseEnter={() => sound.play("hover")}
+        onClick={() => sound.play("click")}
         className={cn(
           "panel group relative flex h-full flex-col overflow-hidden",
           "p-6 transition-[transform,border-color,box-shadow] duration-500 ease-(--ease-cinematic)",

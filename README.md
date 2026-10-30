@@ -6,41 +6,76 @@
 
 ---
 
-## 🚀 Deployment — Netlify
+## ⚡ Deployment — Vercel
 
-This project is deployed exclusively on **Netlify** as a static export.
+Growth Guild Labs is built with **Next.js 16 (App Router)** and is natively optimized for **Vercel**.
 
-### Option A — Recommended: GitHub → Netlify (Auto-Deploy)
+### 📁 Which Folder to Upload to Vercel?
 
-1. Push this repository to GitHub.
-2. Log in to [Netlify](https://app.netlify.com) → **Add new site → Import an existing project**.
-3. Connect your GitHub account and select this repository.
-4. Configure the build settings:
-   - **Build command**: `npm run export`
-   - **Publish directory**: `out`
-5. Under **Environment variables**, add:
-   - `NEXT_PUBLIC_SITE_URL` → your production domain (e.g. `https://growthguildlabs.netlify.app`)
-6. Click **Deploy site**. Netlify will build and publish automatically on every push.
+Unlike simple static hosts that take a drag-and-dropped HTML folder, **Vercel is the creator and native platform of Next.js**. It deploys from your **repository root**:
 
-> Node.js version `20` is configured automatically via `netlify.toml`.
+> ### **👉 DEPLOY THE ENTIRE PROJECT ROOT FOLDER**
+> ```
+> c:\Users\Admin\Downloads\growth-guild-labs\
+> ```
+> *(Do not upload `.next` or individual subfolders manually. Vercel automatically builds `.next` on its high-speed edge cloud from the root repository files.)*
 
 ---
 
-### Option B — Manual: Netlify Drop (Drag & Drop)
+### Method 1 — Recommended: GitHub → Vercel (One-Click Auto-Deploy)
 
-1. In your terminal, generate the production export:
+1. Push this project to your GitHub repository:
    ```powershell
-   npm run export
+   git add .
+   git commit -m "feat: next-level cybernetic UI, 3D shaders, live audio & interactive terminal"
+   git push origin main
    ```
-2. Open File Explorer and navigate to the project folder:
-   ```
-   c:\Users\Admin\Downloads\growth-guild-labs\
-   ```
-3. Locate the **`out`** folder inside the project.
-4. Go to [https://app.netlify.com/drop](https://app.netlify.com/drop).
-5. Drag and drop the **`out`** folder directly onto the Netlify Drop page.
+2. Go to your [Vercel Dashboard](https://vercel.com/dashboard) and click **"Add New..." → "Project"**.
+3. Import your GitHub repository.
+4. Vercel automatically detects **Next.js** with:
+   - **Framework Preset**: `Next.js`
+   - **Root Directory**: `./` (project root)
+   - **Build Command**: `npm run build`
+   - **Output Directory**: `.next`
+5. Under **Environment Variables**, optionally add:
+   - `NEXT_PUBLIC_SITE_URL`: `https://your-domain.vercel.app`
+6. Click **Deploy**. Your site will be live on Vercel's edge network within seconds. Every future push to GitHub will automatically trigger a production deployment.
 
-> ⚠️ Upload **only the `out` folder**. Do **not** upload `.next`, `public`, `src`, or the root project folder.
+---
+
+### Method 2 — Direct CLI Deploy: `vercel`
+
+If you have the Vercel CLI installed:
+
+1. Open PowerShell in the project directory:
+   ```powershell
+   cd "c:\Users\Admin\Downloads\growth-guild-labs"
+   ```
+2. Run the deployment command:
+   ```powershell
+   npx vercel
+   ```
+3. Follow the two prompts:
+   - Set up and deploy? `Y`
+   - Which scope? Select your personal or team account
+   - Link to existing project? `N`
+   - Project name? `growth-guild-labs`
+   - In which directory is your code located? `./`
+4. For production release:
+   ```powershell
+   npx vercel --prod
+   ```
+
+---
+
+## 🚀 Key Interactive Systems
+
+1. **Space & Orbit 3D Shader Journey**: WebGL-powered 5-scene camera journey built with Three.js, procedural atmosphere rims, resonance halos, and particle dust.
+2. **Interactive Audio Engine (Web Audio API)**: Real-time procedural audio synthesis for button hovers, command clicks, and soundwave equalizer. Toggle on/off anytime from the header. Zero external MP3/WAV dependencies.
+3. **Command Palette (`Ctrl + K` / `Cmd + K`)**: Universal instant search palette to search products, downloads, release manifests, founder bios, and documentation.
+4. **Interactive Telemetry Sandbox**: Live typable and clickable console shell on the homepage. Query real-time diagnostics (`status`, `ultron`, `jarvis`, `friday`, `checksums`, `founders`).
+5. **Continuous Cyber Tech Ticker**: GPU-accelerated marquee showcasing our real core tech stack (PyQt6, Vosk, Gemini, FastMCP, Jetpack Compose, Three.js).
+6. **Verified Social Media Broadcast Hubs**: Interactive cards linking directly to Growth Guild Labs on Instagram, YouTube, Threads, and Facebook.
 
 ---
 
@@ -72,12 +107,8 @@ sha256sum ULTRON_2.0_Windows_x64.zip
 
 ## 🗄️ Large Binary Hosting Advisory
 
-- **Android APKs** (`ULTRON_2.0_Connect.apk` — 26.87 MB, `JARVIS-release.apk` — 94.82 MB) are included in `public/releases/` and exported to `out/releases/`. These are directly downloadable from the live site.
-- **Windows ZIP archives** (228 MB – 400 MB) exceed Netlify's 25 MB per-file limit for static hosting. They must be hosted externally:
-  - Upload the 3 Windows ZIPs to **GitHub Releases**, **Cloudflare R2**, or **Google Drive**.
-  - Update their `downloadUrl` values in [`src/lib/releases.ts`](./src/lib/releases.ts).
-  - Change `hostingStatus` from `"mirror_pending"` to `"available"` in the same file.
-- Until external hosting is configured, the Download Centre shows an honest **"Public Mirror Pending"** state for those 3 packages — no fake buttons.
+- **Android APKs** (`ULTRON_2.0_Connect.apk` — 26.87 MB, `JARVIS-release.apk` — 94.82 MB) are included inside `public/releases/` and can be downloaded directly from the live site.
+- **Windows ZIP archives** (228 MB – 400 MB) are large executable packages with runtime Python/PyQt6 environments. For public mirror distribution, upload them to GitHub Releases, Google Drive, or Cloudflare R2, then update the mirror links in `src/lib/releases.ts`. The UI honestly indicates "Mirror Pending" until a public mirror CDN link is provided.
 
 ---
 
@@ -90,89 +121,25 @@ npm install
 # Start local development server (http://localhost:3000)
 npm run dev
 
-# Static export — generates the out/ folder for Netlify deployment
+# Full production build (Next.js App Router for Vercel)
+npm run build
+
+# Static export (generates out/ folder if static files are needed)
 npm run export
 
 # TypeScript type checking
 npm run typecheck
 
-# ESLint
+# ESLint code verification
 npm run lint
 ```
 
 ---
 
-## 🗺️ Website Architecture & Routes
-
-```
-src/
-├── app/
-│   ├── page.tsx                  # Cinematic interactive journey with canvas FX & HUD
-│   ├── downloads/page.tsx        # Official Download Centre with platform filters & checksums
-│   ├── ecosystem/page.tsx        # 5-app directory & architecture pairing maps
-│   ├── products/[slug]/page.tsx  # Dedicated pages for each app + download widgets
-│   ├── about/page.tsx            # Founders, mission statement & official brand badge
-│   ├── lab-notes/page.tsx        # Technical research logs & engineering notes
-│   ├── feedback/page.tsx         # Direct founder contact & social channels
-│   ├── privacy/page.tsx          # Honest privacy policy & data practices
-│   ├── not-found.tsx             # Cinematic 404 with HUD error telemetry
-│   ├── layout.tsx                # Root layout with page transition shaders
-│   ├── sitemap.ts                # Dynamic XML sitemap generator
-│   ├── robots.ts                 # Production robots.txt
-│   └── manifest.ts               # Progressive Web App manifest
-├── components/
-│   ├── downloads/                # DownloadCenter interactive filter & hash verification
-│   ├── fx/                       # Canvas particle field, ArcReactorCanvas, DataStreamCanvas, PageTransition
-│   ├── journey/                  # Three.js WebGL orbit journey & static fallback
-│   ├── seo/                      # JSON-LD structured data (SoftwareApplication, Organization)
-│   └── ui/                       # Neon badges, HUD frames, interactive cards, magnetic CTA buttons
-└── lib/
-    ├── releases.ts               # Single verified release manifest with SHA-256 hashes
-    ├── products.ts               # Single source of truth for all 5 product specifications
-    ├── site.ts                   # Brand constants, navigation links & verified socials
-    └── seo.ts                    # Dynamic OpenGraph, Twitter card & metadata helpers
-```
-
-### All Generated Routes (19 total)
-
-| Route | File in `out/` |
-|---|---|
-| `/` | `out/index.html` |
-| `/about` | `out/about/index.html` |
-| `/downloads` | `out/downloads/index.html` |
-| `/ecosystem` | `out/ecosystem/index.html` |
-| `/lab-notes` | `out/lab-notes/index.html` |
-| `/feedback` | `out/feedback/index.html` |
-| `/privacy` | `out/privacy/index.html` |
-| `/products/ultron-2` | `out/products/ultron-2/index.html` |
-| `/products/ultron-connector` | `out/products/ultron-connector/index.html` |
-| `/products/jarvis-2` | `out/products/jarvis-2/index.html` |
-| `/products/jarvis-phone` | `out/products/jarvis-phone/index.html` |
-| `/products/friday-ai` | `out/products/friday-ai/index.html` |
-| `/404` | `out/404/index.html` |
-| (+ manifests, sitemap, robots, icons) | Static files at root of `out/` |
-
----
-
-## ⚙️ Netlify Configuration (`netlify.toml`)
-
-```toml
-[build]
-  command = "npm run export"
-  publish = "out"
-
-[build.environment]
-  NODE_VERSION = "20"
-```
-
-Security headers, cache rules, and redirect fallbacks are pre-configured in `netlify.toml`.
-
----
-
 ## 👥 Leadership & Identity
 
-- **Zaid Uddin** — CEO & Founder
-- **Idrees Uddin** — Co-founder
+- **Zaid Uddin** — CEO & Founder (Lead Systems Architect)
+- **Idrees Uddin** — Co-founder (Hardware & Gateway Engineering)
 - **Tagline**: *Build More. Grow Together.*
 - **Hero Headline**: *THE FUTURE IS BUILT. NOT WAITED FOR.*
 - **Official Socials**:
@@ -180,16 +147,3 @@ Security headers, cache rules, and redirect fallbacks are pre-configured in `net
   - YouTube: [@growthguildlabs189](https://youtube.com/@growthguildlabs189)
   - Threads: [@growthguild_189](https://www.threads.com/@growthguild_189/)
   - Facebook: [Growth Guild Labs Page](https://www.facebook.com/share/19MHYoVmAh/)
-
----
-
-## 🛡️ Brand Palette
-
-| Token | Hex | Usage |
-|---|---|---|
-| Background | `#03090D` | Page background |
-| Cyan | `#00E5FF` | Primary accent, ULTRON brand |
-| Green | `#39FF65` | JARVIS brand, success states |
-| Foreground | `#F3FAFC` | Body text |
-
-**Fonts:** Sora (display), Inter (body), JetBrains Mono (monospace)
