@@ -1,10 +1,8 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import dynamic from "next/dynamic";
-import { CtaLink } from "@/components/ui/CtaLink";
-import { TypewriterCycle } from "@/components/ui/InteractiveElements";
-import { SITE } from "@/lib/site";
 
 const ParticleField = dynamic(
   () => import("@/components/fx/ParticleField").then((m) => m.ParticleField),
@@ -16,77 +14,68 @@ const ArcReactorCanvas = dynamic(
   { ssr: false }
 );
 
-const HERO_PHRASES = [
-  "ULTRON 2.0",
-  "JARVIS 2.0",
-  "F.R.I.D.A.Y. AI",
-  "the future",
-];
-
 /**
- * Home hero — massively upgraded cinematic experience with:
- * - Deep space background with multi-layer nebula
- * - Animated cyber grid overlay
- * - Full-logo brand mark with glow
- * - Arc reactor decorative elements
- * - Staged typewriter headline
+ * HeroSection — World-class AI company showcase
+ * Apple × Marvel × Vercel aesthetic with triple glow rings, scan-lines, and deep space nebulas.
  */
 export function HeroSection() {
   return (
     <section
       id="scene-01"
       data-scene="Deep Space"
-      className="relative flex min-h-[96vh] items-end pb-24 sm:min-h-screen sm:items-center sm:pb-0 overflow-hidden"
+      className="relative flex min-h-screen w-full items-center justify-center overflow-hidden pt-28 pb-20 sm:pt-32 sm:pb-24"
     >
       {/* ── Deep Space Background ── */}
-      <div aria-hidden="true" className="absolute inset-0 z-0">
-        {/* Base dark space gradient */}
+      <div aria-hidden="true" className="absolute inset-0 z-0 pointer-events-none">
         <div
           className="absolute inset-0"
           style={{
             background:
-              "linear-gradient(180deg, #010407 0%, #02080d 30%, #03090d 60%, #071218 100%)",
+              "radial-gradient(ellipse 100% 90% at 50% 20%, #041017 0%, #02070b 45%, #010406 100%)",
           }}
         />
-        {/* Nebula blob 1 — cyan */}
+
+        {/* Nebula blob 1 — Cyan (Top left/center) */}
         <div
           className="nebula-blob"
           style={{
-            width: "70vw",
+            width: "65vw",
             height: "55vh",
             top: "-10%",
-            left: "-20%",
+            left: "-15%",
             background:
-              "radial-gradient(ellipse, rgba(0,229,255,0.12) 0%, rgba(0,229,255,0.04) 40%, transparent 70%)",
-            animationDelay: "0s",
+              "radial-gradient(ellipse, rgba(0,229,255,0.14) 0%, rgba(0,229,255,0.03) 45%, transparent 70%)",
+            animationDuration: "35s",
           }}
         />
-        {/* Nebula blob 2 — violet */}
+
+        {/* Nebula blob 2 — Violet (Bottom right) */}
         <div
           className="nebula-blob"
           style={{
-            width: "60vw",
+            width: "55vw",
             height: "50vh",
             bottom: "-15%",
-            right: "-15%",
+            right: "-10%",
             background:
-              "radial-gradient(ellipse, rgba(124,92,255,0.1) 0%, rgba(124,92,255,0.03) 45%, transparent 70%)",
-            animationDelay: "-12s",
-            animationDuration: "50s",
+              "radial-gradient(ellipse, rgba(124,92,255,0.12) 0%, rgba(124,92,255,0.02) 50%, transparent 70%)",
+            animationDelay: "-14s",
+            animationDuration: "42s",
           }}
         />
-        {/* Nebula blob 3 — green accent */}
+
+        {/* Nebula blob 3 — Emerald Green (Center right) */}
         <div
           className="nebula-blob"
           style={{
-            width: "40vw",
-            height: "40vh",
-            top: "30%",
-            right: "10%",
+            width: "45vw",
+            height: "45vh",
+            top: "25%",
+            right: "5%",
             background:
-              "radial-gradient(ellipse, rgba(57,255,101,0.06) 0%, transparent 70%)",
-            animationDelay: "-25s",
-            animationDuration: "35s",
+              "radial-gradient(ellipse, rgba(0,255,136,0.08) 0%, rgba(57,255,101,0.02) 40%, transparent 70%)",
+            animationDelay: "-22s",
+            animationDuration: "38s",
           }}
         />
       </div>
@@ -94,164 +83,150 @@ export function HeroSection() {
       {/* ── Cyber Grid ── */}
       <div aria-hidden="true" className="cyber-grid z-[1]" />
 
+      {/* ── Animated Scan Line across the Hero ── */}
+      <div aria-hidden="true" className="scan-line z-[5]" />
+
       {/* ── Ambient Particle Field ── */}
       <div className="pointer-events-none absolute inset-0 z-[2]">
         <ParticleField />
       </div>
 
-      {/* ── Arc Reactor Decorative — right side ── */}
+      {/* ── Arc Reactor Decorative Canvases ── */}
       <div
-        className="pointer-events-none absolute right-[-60px] top-1/2 -translate-y-1/2 z-[3] hidden lg:block"
+        className="pointer-events-none absolute right-[-80px] top-1/2 -translate-y-1/2 z-[3] hidden xl:block opacity-25"
         aria-hidden="true"
       >
-        <ArcReactorCanvas size={560} color="#00e5ff" className="opacity-20" />
+        <ArcReactorCanvas size={580} color="#00e5ff" />
       </div>
-      {/* Secondary reactor — gold */}
       <div
-        className="pointer-events-none absolute right-[22%] bottom-[-40px] z-[3] hidden xl:block"
+        className="pointer-events-none absolute left-[-60px] top-[18%] z-[3] hidden xl:block opacity-15"
         aria-hidden="true"
       >
-        <ArcReactorCanvas size={220} color="#ffb300" className="opacity-12" />
-      </div>
-      {/* Tertiary reactor — violet */}
-      <div
-        className="pointer-events-none absolute left-[-40px] top-[10%] z-[3] hidden xl:block"
-        aria-hidden="true"
-      >
-        <ArcReactorCanvas size={180} color="#7c5cff" className="opacity-10" />
+        <ArcReactorCanvas size={280} color="#7c5cff" />
       </div>
 
-      {/* ── Vignette overlay ── */}
+      {/* ── Vignette & Radial Focus Overlay ── */}
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 z-[4]"
         style={{
           background:
-            "radial-gradient(ellipse 100% 80% at 30% 50%, transparent 45%, rgba(2,6,10,0.6) 100%)",
+            "radial-gradient(ellipse 90% 80% at 50% 50%, transparent 35%, rgba(1,4,6,0.7) 100%)",
         }}
       />
 
-      {/* ── Content ── */}
-      <div className="container-guild relative z-10 w-full">
-        <div className="hero-rise flex flex-col items-start gap-6 max-w-4xl">
+      {/* ── Centered Hero Content ── */}
+      <div className="container-guild relative z-10 flex flex-col items-center text-center">
+        <div className="hero-rise flex flex-col items-center gap-7 max-w-4xl">
 
-          {/* Eyebrow with logo */}
-          <div className="flex items-center gap-4">
-            <div className="relative">
-              <div
-                aria-hidden="true"
-                className="absolute inset-0 rounded-xl blur-md"
-                style={{ background: "rgba(0,229,255,0.3)" }}
-              />
+          {/* Large Centered Logo with Triple Glow Rings (Cyan, Violet, Green) */}
+          <div className="relative my-2 flex items-center justify-center">
+            {/* Outer Green Glow Ring */}
+            <div
+              className="glow-ring absolute size-40 sm:size-48 border border-emerald-400/20"
+              style={{
+                boxShadow: "0 0 35px rgba(0,255,136,0.15), inset 0 0 25px rgba(0,255,136,0.08)",
+                animationDuration: "4.5s",
+                animationDelay: "-1.5s",
+              }}
+            />
+            {/* Middle Violet Glow Ring */}
+            <div
+              className="glow-ring absolute size-32 sm:size-40 border border-violet-500/30"
+              style={{
+                boxShadow: "0 0 30px rgba(124,92,255,0.2), inset 0 0 20px rgba(124,92,255,0.1)",
+                animationDuration: "3.5s",
+                animationDelay: "-0.75s",
+              }}
+            />
+            {/* Inner Cyan Glow Ring */}
+            <div
+              className="glow-ring absolute size-24 sm:size-32 border border-cyan-electric/40"
+              style={{
+                boxShadow: "0 0 35px rgba(0,229,255,0.35), inset 0 0 25px rgba(0,229,255,0.2)",
+                animationDuration: "2.8s",
+              }}
+            />
+
+            {/* Logo Core */}
+            <div className="relative z-10 size-18 sm:size-22 rounded-2xl bg-void/90 p-2.5 border border-cyan-electric/50 shadow-2xl backdrop-blur-xl">
               <Image
                 src="/brand/growth-guild-labs-logo.png"
-                alt="Growth Guild Labs logo"
-                width={52}
-                height={52}
-                className="relative rounded-xl border border-cyan-electric/40 bg-void/80 p-1 nav-logo-glow"
+                alt="Growth Guild Labs Logo"
+                width={80}
+                height={80}
+                className="size-full object-contain filter drop-shadow-[0_0_12px_rgba(0,229,255,0.8)]"
                 priority
               />
             </div>
-            <div className="flex flex-col gap-0.5">
-              <span className="eyebrow">SCENE 01 · DEEP SPACE</span>
-              <span className="font-mono text-[0.6rem] uppercase tracking-[0.3em] text-cyan-electric/70">
-                {SITE.name}
+          </div>
+
+          {/* Hero Badge */}
+          <div className="hero-badge transition-all duration-300 hover:border-cyan-electric/50 hover:shadow-[0_0_20px_rgba(0,229,255,0.25)]">
+            <span className="text-sm">🚀</span>
+            <span>GROWTH GUILD LABS — BUILD MORE. GROW TOGETHER.</span>
+          </div>
+
+          {/* Giant Headline: "The Future Is Built. Not Waited For." */}
+          <h1 className="font-display text-[clamp(2.9rem,7.2vw,6.4rem)] font-extrabold tracking-tight text-ice-white leading-[1.03] text-balance">
+            The Future Is{" "}
+            <span className="gradient-text-cyan font-black drop-shadow-[0_0_35px_rgba(0,229,255,0.4)]">
+              Built.
+            </span>
+            <span className="block text-mist/90 text-[0.62em] font-medium tracking-normal mt-2 sm:mt-3">
+              Not Waited For.
+            </span>
+          </h1>
+
+          {/* Subtext */}
+          <p className="max-w-2xl font-sans text-lg sm:text-xl text-mist leading-relaxed font-light text-pretty">
+            5 working AI applications. 2 platforms. One independent guild.
+          </p>
+
+          {/* Three Stats in a Row: 5 Apps | 2 Platforms | 56+ Tools */}
+          <div className="glass-card mt-2 grid w-full max-w-2xl grid-cols-3 divide-x divide-white/10 px-4 py-5 sm:px-8 sm:py-6">
+            <div className="flex flex-col items-center gap-1.5 px-2">
+              <span className="stat-number text-[#00e5ff] drop-shadow-[0_0_20px_rgba(0,229,255,0.5)]">
+                5
+              </span>
+              <span className="font-mono text-[0.68rem] uppercase tracking-[0.22em] text-mist/80">
+                Apps
+              </span>
+            </div>
+            <div className="flex flex-col items-center gap-1.5 px-2">
+              <span className="stat-number text-[#00FF88] drop-shadow-[0_0_20px_rgba(0,255,136,0.5)]">
+                2
+              </span>
+              <span className="font-mono text-[0.68rem] uppercase tracking-[0.22em] text-mist/80">
+                Platforms
+              </span>
+            </div>
+            <div className="flex flex-col items-center gap-1.5 px-2">
+              <span className="stat-number text-[#FFD700] drop-shadow-[0_0_20px_rgba(255,215,0,0.5)]">
+                56+
+              </span>
+              <span className="font-mono text-[0.68rem] uppercase tracking-[0.22em] text-mist/80">
+                Tools
               </span>
             </div>
           </div>
 
-          {/* Spec chip */}
-          <span className="spec-chip spec-chip--lit">
-            {SITE.tagline}
-          </span>
-
-          {/* Main headline */}
-          <h1 className="font-display text-hero font-bold text-ice-white leading-[1.02] text-balance">
-            The future is{" "}
-            <span className="relative inline-block">
-              built
-              <span
-                aria-hidden="true"
-                className="absolute -bottom-1 left-0 h-[3px] w-full"
-                style={{
-                  background:
-                    "linear-gradient(90deg, #00e5ff, #39ff65, transparent)",
-                  boxShadow: "0 0 16px #00e5ff88, 0 0 32px #00e5ff44",
-                }}
-              />
-            </span>
-            .<br />
-            <span
-              className="text-transparent bg-clip-text"
-              style={{
-                backgroundImage:
-                  "linear-gradient(135deg, #00e5ff 0%, #7fe9ff 40%, #39ff65 100%)",
-              }}
-            >
-              Not waited for.
-            </span>
-          </h1>
-
-          {/* Typewriter line */}
-          <p className="max-w-xl font-mono text-[0.95rem] leading-relaxed text-mist">
-            Powering{" "}
-            <TypewriterCycle
-              phrases={HERO_PHRASES}
-              color="#00e5ff"
-              speed={55}
-            />
-            {" "}— built from scratch, for real.
-          </p>
-
-          {/* Description */}
-          <p className="max-w-xl text-[1.05rem] leading-relaxed text-mist text-pretty">
-            {SITE.marketingLine}
-          </p>
-
-          {/* Stats row */}
-          <div className="flex flex-wrap items-center gap-6 border-t border-hairline pt-6">
-            {[
-              { n: "5", label: "AI Applications", color: "#00e5ff" },
-              { n: "2", label: "Platforms", color: "#39ff65" },
-              { n: "56+", label: "Tool Modules", color: "#ffb300" },
-              { n: "1", label: "Independent Guild", color: "#7c5cff" },
-            ].map((s) => (
-              <div key={s.label} className="flex items-baseline gap-2">
-                <span
-                  className="font-display text-3xl font-bold"
-                  style={{ color: s.color, textShadow: `0 0 20px ${s.color}88` }}
-                >
-                  {s.n}
-                </span>
-                <span className="font-mono text-[0.65rem] uppercase tracking-[0.28em] text-muted-grey">
-                  {s.label}
-                </span>
-              </div>
-            ))}
-          </div>
-
-          {/* CTAs */}
-          <div className="mt-2 flex flex-wrap gap-4">
-            <CtaLink
+          {/* Two CTA Buttons: Explore Ecosystem + Download Apps */}
+          <div className="mt-3 flex flex-wrap items-center justify-center gap-4 sm:gap-6">
+            <Link
               href="/ecosystem"
-              ariaLabel="Explore the Growth Guild Labs ecosystem"
+              className="btn-neon font-bold text-sm tracking-[0.2em] px-8 py-3.5 shadow-lg"
             >
-              Explore the ecosystem
-            </CtaLink>
-            <CtaLink
+              Explore Ecosystem
+              <span className="ml-1 text-base transition-transform group-hover:translate-x-1">→</span>
+            </Link>
+            <Link
               href="/downloads"
-              variant="secondary"
-              ariaLabel="Download our applications"
+              className="group relative inline-flex items-center justify-center gap-2 rounded-full border border-white/20 bg-white/5 px-8 py-3.5 font-mono text-[0.8rem] font-semibold uppercase tracking-[0.18em] text-ice-white backdrop-blur-md transition-all duration-300 hover:border-emerald-400/50 hover:bg-emerald-400/10 hover:text-emerald-300 hover:shadow-[0_0_25px_rgba(0,255,136,0.2)]"
             >
-              Download apps
-            </CtaLink>
-            <CtaLink
-              href="#ecosystem-preview"
-              variant="ghost"
-              ariaLabel="Discover our products"
-            >
-              Discover products
-            </CtaLink>
+              <span>Download Apps</span>
+              <span className="text-xs transition-transform duration-300 group-hover:translate-y-0.5">↓</span>
+            </Link>
           </div>
         </div>
       </div>
@@ -259,23 +234,22 @@ export function HeroSection() {
       {/* ── Scroll cue ── */}
       <div
         aria-hidden="true"
-        className="absolute bottom-8 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-2 sm:flex z-10"
+        className="absolute bottom-6 left-1/2 -translate-x-1/2 hidden flex-col items-center gap-2 sm:flex z-10"
       >
-        <span className="font-mono text-micro uppercase tracking-[0.34em] text-muted-grey">
-          The journey continues
+        <span className="font-mono text-[0.62rem] uppercase tracking-[0.3em] text-muted-grey/70">
+          Scroll to explore
         </span>
-        <span className="relative h-12 w-px overflow-hidden bg-white/10">
-          <span className="absolute inset-x-0 top-0 h-4 animate-scan bg-cyan-electric/80" />
+        <span className="relative h-10 w-px overflow-hidden bg-white/10">
+          <span className="absolute inset-x-0 top-0 h-3 animate-scan bg-cyan-electric/80" />
         </span>
       </div>
 
-      {/* ── Bottom gradient fade ── */}
+      {/* ── Bottom gradient blend into next section ── */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-x-0 bottom-0 z-[4] h-40"
+        className="pointer-events-none absolute inset-x-0 bottom-0 z-[4] h-32"
         style={{
-          background:
-            "linear-gradient(to bottom, transparent 0%, rgba(3,9,13,0.8) 100%)",
+          background: "linear-gradient(to bottom, transparent 0%, rgba(3,9,13,0.95) 100%)",
         }}
       />
     </section>
