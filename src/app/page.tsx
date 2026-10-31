@@ -21,7 +21,7 @@ export const metadata = buildMetadata({
   path: "/",
 });
 
-/* ── Journey chapters (content stays HTML, readable without WebGL) ─────── */
+/* ── Journey chapters ─────────────────────────────────────────────────── */
 
 const SCENES: SceneStop[] = [
   { id: "scene-01", label: "Deep Space" },
@@ -89,6 +89,21 @@ export default function HomePage() {
               carries verified SHA-256 checksums, downloadable APKs, and step-by-step
               installation instructions.
             </p>
+
+            {/* Core principles */}
+            <div className="grid gap-2 sm:grid-cols-2 mt-2">
+              {[
+                "Build through experimentation and implementation",
+                "Focus on practical software experiences",
+                "Explore AI-assisted productivity and automation",
+                "Prioritise real functionality over exaggerated claims",
+              ].map((p) => (
+                <div key={p} className="flex items-start gap-2.5 text-sm text-mist">
+                  <span className="mt-1.5 size-1.5 rounded-full bg-neon-green shrink-0" style={{ boxShadow: "0 0 6px #39ff6588" }} aria-hidden="true" />
+                  {p}
+                </div>
+              ))}
+            </div>
           </Reveal>
         </Chapter>
 
@@ -107,6 +122,24 @@ export default function HomePage() {
               companions through local gateways. Each product keeps its own
               identity — nothing is a renamed copy of anything else.
             </p>
+            {/* Platform chips */}
+            <div className="flex flex-wrap gap-2">
+              {[
+                { label: "Windows 10/11", color: "#00e5ff" },
+                { label: "Android", color: "#39ff65" },
+                { label: "Voice AI", color: "#ffb300" },
+                { label: "Desktop AI", color: "#7c5cff" },
+                { label: "Offline-ready", color: "#ff1744" },
+              ].map((chip) => (
+                <span
+                  key={chip.label}
+                  className="spec-chip"
+                  style={{ color: chip.color, borderColor: `${chip.color}44`, background: `${chip.color}0f` }}
+                >
+                  {chip.label}
+                </span>
+              ))}
+            </div>
             <CtaLink href="/ecosystem" ariaLabel="Open the full ecosystem directory">
               Open the ecosystem directory
             </CtaLink>
@@ -129,6 +162,22 @@ export default function HomePage() {
               tell — engineering notes, experiments and development updates
               from inside the project.
             </p>
+            {/* Tech stack grid */}
+            <div className="grid gap-2 sm:grid-cols-3">
+              {[
+                { name: "PyQt6", role: "Desktop UI shell" },
+                { name: "Gemini Live", role: "Native voice AI" },
+                { name: "Vosk ASR", role: "Offline speech" },
+                { name: "three.js", role: "3D HUD rendering" },
+                { name: "FastMCP", role: "Tool protocol" },
+                { name: "Playwright", role: "Browser automation" },
+              ].map((t) => (
+                <div key={t.name} className="rounded-xl border border-hairline bg-void/60 px-4 py-3">
+                  <p className="font-mono text-[0.75rem] font-bold text-cyan-electric">{t.name}</p>
+                  <p className="font-mono text-[0.6rem] text-muted-grey">{t.role}</p>
+                </div>
+              ))}
+            </div>
             <CtaLink href="/lab-notes" variant="secondary" ariaLabel="Read the Growth Guild Labs lab notes">
               Enter the lab notes
             </CtaLink>
@@ -150,12 +199,12 @@ export default function HomePage() {
                 <li key={p.id}>
                   <a
                     href={`/products/${p.id}`}
-                    className="group flex items-center justify-between gap-4 rounded-2xl border border-hairline bg-void/55 px-5 py-4 backdrop-blur-sm transition-colors duration-500 hover:border-cyan-electric/45"
+                    className="group flex items-center justify-between gap-4 rounded-2xl border border-hairline bg-void/55 px-5 py-4 backdrop-blur-sm transition-all duration-500 hover:border-cyan-electric/45 hover:-translate-y-0.5"
                   >
                     <span className="font-mono text-micro text-muted-grey">
                       0{i + 1}
                     </span>
-                    <span className="font-display text-[1.05rem] text-ice-white transition-colors group-hover:text-cyan-electric">
+                    <span className="font-display text-[1.05rem] text-ice-white transition-colors group-hover:text-cyan-electric flex-1">
                       {p.name}
                     </span>
                     <span
@@ -175,14 +224,27 @@ export default function HomePage() {
         <SceneRail scenes={SCENES} />
       </CinematicJourney>
 
-      {/* ── Continuous Tech Marquee Strip ───────────────────────────────── */}
+      {/* ── Tech Marquee Strip ── */}
       <TechMarquee />
 
-      {/* ── Solid-background sections below the journey ─────────────────── */}
+      {/* ── Solid-background sections ── */}
       <div className="relative z-10 bg-void">
-        {/* Ecosystem preview */}
-        <section id="ecosystem-preview" className="scroll-mt-24 py-24 sm:py-32">
-          <div className="container-guild">
+
+        {/* ── Ecosystem preview ── */}
+        <section id="ecosystem-preview" className="scroll-mt-24 py-24 sm:py-32 relative overflow-hidden">
+          {/* Subtle background */}
+          <div
+            aria-hidden="true"
+            className="nebula-blob"
+            style={{
+              width: "50vw",
+              height: "40vh",
+              top: "-10%",
+              right: "-15%",
+              background: "radial-gradient(ellipse, rgba(0,229,255,0.05) 0%, transparent 70%)",
+            }}
+          />
+          <div className="container-guild relative z-10">
             <Reveal className="flex flex-col gap-6">
               <SectionHeading
                 eyebrow="THE ECOSYSTEM"
@@ -202,22 +264,22 @@ export default function HomePage() {
               ))}
               {/* Ecosystem map tile */}
               <Reveal delay={PRODUCTS.length * 70} className="h-full">
-                <div className="panel flex h-full flex-col justify-between p-6">
+                <div className="holo-card h-full flex flex-col justify-between p-6">
                   <div>
                     <p className="font-mono text-micro uppercase tracking-[0.3em] text-muted-grey">
                       How they connect
                     </p>
                     <ul className="mt-4 flex flex-col gap-3 text-sm text-mist">
                       <li className="flex items-center gap-3">
-                        <span className="size-1.5 rounded-full bg-neon-green" aria-hidden="true" />
+                        <span className="size-1.5 rounded-full bg-neon-green" style={{ boxShadow: "0 0 6px #39ff6588" }} aria-hidden="true" />
                         ULTRON 2.0 ↔ ULTRON 2.0 Connector — local pairing gateway
                       </li>
                       <li className="flex items-center gap-3">
-                        <span className="size-1.5 rounded-full bg-cyan-electric" aria-hidden="true" />
+                        <span className="size-1.5 rounded-full bg-cyan-electric" style={{ boxShadow: "0 0 6px #00e5ff88" }} aria-hidden="true" />
                         JARVIS 2.0 ↔ JARVIS 2.0 Phone — one family, two screens
                       </li>
                       <li className="flex items-center gap-3">
-                        <span className="size-1.5 rounded-full bg-violet-400" aria-hidden="true" />
+                        <span className="size-1.5 rounded-full bg-violet-400" style={{ boxShadow: "0 0 6px #7c5cff88" }} aria-hidden="true" />
                         F.R.I.D.A.Y. AI — the hands-free sibling in the same voice-line
                       </li>
                     </ul>
@@ -231,7 +293,7 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* ── Interactive Architecture Terminal Sandbox ── */}
+        {/* ── Terminal Sandbox ── */}
         <section className="border-t border-hairline py-20 bg-void/50">
           <div className="container-guild">
             <Reveal className="mb-10 flex flex-col gap-4">
@@ -250,29 +312,40 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* ── Stats band with Animated Counter ── */}
+        {/* ── Stats Band ── */}
         <section className="border-t border-hairline py-16">
           <div className="container-guild">
             <Reveal className="grid grid-cols-2 gap-6 sm:grid-cols-4">
-              <div className="panel flex flex-col items-center gap-2 p-6 text-center">
+              <div className="stat-card">
                 <AnimatedCounter value={5} label="AI Applications" color="#00e5ff" />
               </div>
-              <div className="panel flex flex-col items-center gap-2 p-6 text-center">
+              <div className="stat-card">
                 <AnimatedCounter value={2} label="Platforms (Win & Android)" color="#39ff65" />
               </div>
-              <div className="panel flex flex-col items-center gap-2 p-6 text-center">
+              <div className="stat-card">
                 <AnimatedCounter value={56} label="FastMCP Tool Modules" suffix="+" color="#ffb300" />
               </div>
-              <div className="panel flex flex-col items-center gap-2 p-6 text-center">
+              <div className="stat-card">
                 <AnimatedCounter value={100} label="Independent Guild" suffix="%" color="#7c5cff" />
               </div>
             </Reveal>
           </div>
         </section>
 
-        {/* People Behind Growth Guild Labs */}
-        <section className="border-t border-hairline py-24 sm:py-28">
-          <div className="container-guild grid gap-12 lg:grid-cols-[1fr_1.1fr]">
+        {/* ── People Behind Growth Guild Labs ── */}
+        <section className="border-t border-hairline py-24 sm:py-28 relative overflow-hidden">
+          <div
+            aria-hidden="true"
+            className="nebula-blob"
+            style={{
+              width: "45vw",
+              height: "45vh",
+              bottom: "-20%",
+              left: "-10%",
+              background: "radial-gradient(ellipse, rgba(124,92,255,0.07) 0%, transparent 70%)",
+            }}
+          />
+          <div className="container-guild relative z-10 grid gap-12 lg:grid-cols-[1fr_1.1fr]">
             <Reveal>
               <SectionHeading
                 eyebrow="PEOPLE BEHIND GROWTH GUILD LABS"
@@ -290,19 +363,26 @@ export default function HomePage() {
             </Reveal>
             <Reveal delay={120} className="grid gap-5 sm:grid-cols-2">
               {[
-                { name: "Zaid Uddin", role: "CEO & Founder", desc: "Lead system architect, PyQt6 core designer, and AI voice pipeline builder." },
-                { name: "Idrees Uddin", role: "Co-founder", desc: "Systems engineering, companion gateway bridging, and hardware testing lead." },
+                {
+                  name: "Zaid Uddin",
+                  role: "CEO & Founder",
+                  desc: "Lead system architect, PyQt6 core designer, and AI voice pipeline builder.",
+                  initials: "ZU",
+                },
+                {
+                  name: "Idrees Uddin",
+                  role: "Co-founder",
+                  desc: "Systems engineering, companion gateway bridging, and hardware testing lead.",
+                  initials: "IU",
+                },
               ].map((person) => (
-                <div key={person.name} className="panel flex flex-col justify-between gap-8 p-7 border border-hairline hover:border-cyan-electric/40 transition-colors">
+                <div key={person.name} className="person-card flex flex-col justify-between gap-8">
                   <div className="flex items-center justify-between">
                     <span
                       aria-hidden="true"
                       className="grid size-12 place-items-center rounded-xl border border-cyan-electric/40 bg-cyan-electric/10 font-display text-lg font-bold text-cyan-electric"
                     >
-                      {person.name
-                        .split(" ")
-                        .map((w) => w[0])
-                        .join("")}
+                      {person.initials}
                     </span>
                     <span className="font-mono text-[0.6rem] text-cyan-electric border border-cyan-electric/30 px-2 py-0.5 rounded-full">
                       VERIFIED BUILDER
@@ -335,7 +415,7 @@ export default function HomePage() {
                 Follow the live evolution.
               </h2>
               <p className="max-w-2xl text-mist">
-                Real engineering progress, release previews, UI demonstrations, and live walkthroughs. 
+                Real engineering progress, release previews, UI demonstrations, and live walkthroughs.
                 Follow Growth Guild Labs on all verified social media platforms.
               </p>
             </Reveal>
@@ -345,7 +425,7 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* Lab notes teaser */}
+        {/* ── Lab notes teaser ── */}
         <section className="border-t border-hairline py-20">
           <div className="container-guild flex flex-col items-start gap-6 sm:flex-row sm:items-center sm:justify-between">
             <Reveal className="flex flex-col gap-4">
@@ -361,7 +441,7 @@ export default function HomePage() {
                 alt="Growth Guild Labs emblem"
                 width={56}
                 height={56}
-                className="rounded-lg border border-hairline bg-void/60 p-1"
+                className="rounded-lg border border-hairline bg-void/60 p-1 nav-logo-glow"
               />
               <CtaLink href="/lab-notes" variant="secondary" ariaLabel="Open Lab Notes">
                 Lab notes index
@@ -370,9 +450,28 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* Final CTA band */}
-        <section className="border-t border-hairline bg-[linear-gradient(180deg,#03090d,#071d24_120%)] py-24">
-          <div className="container-guild flex flex-col items-start gap-8">
+        {/* ── Final CTA ── */}
+        <section className="border-t border-hairline py-24 relative overflow-hidden">
+          <div
+            aria-hidden="true"
+            className="absolute inset-0"
+            style={{
+              background: "linear-gradient(180deg, #03090d, #071d24 120%)",
+            }}
+          />
+          <div
+            aria-hidden="true"
+            className="nebula-blob"
+            style={{
+              width: "60vw",
+              height: "50vh",
+              top: "-20%",
+              left: "50%",
+              transform: "translateX(-50%)",
+              background: "radial-gradient(ellipse, rgba(0,229,255,0.08) 0%, transparent 70%)",
+            }}
+          />
+          <div className="container-guild relative z-10 flex flex-col items-start gap-8">
             <Reveal className="flex flex-col gap-5">
               <span className="eyebrow">THE FUTURE IS BUILT. NOT WAITED FOR.</span>
               <h2 className="max-w-2xl font-display text-title text-ice-white">

@@ -15,41 +15,86 @@ export const metadata: Metadata = buildMetadata({
   path: "/ecosystem",
 });
 
+const PLATFORM_COLORS: Record<string, string> = {
+  gold: "#ffb300",
+  cyan: "#00e5ff",
+  red: "#ff1744",
+  violet: "#7c5cff",
+};
+
 export default function EcosystemPage() {
   return (
     <>
       <ProductsJSONLD products={PRODUCTS} />
 
-      {/* Directory hero */}
-      <section className="relative overflow-hidden pt-40 pb-16">
+      {/* ── Premium Directory Hero ── */}
+      <section className="relative overflow-hidden pt-40 pb-20">
+        {/* Backgrounds */}
+        <div aria-hidden="true" className="absolute inset-0 page-hero-bg" />
+        <div aria-hidden="true" className="cyber-grid opacity-[0.025]" />
+
+        {/* Accent nebula */}
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute inset-0 bg-[radial-gradient(60%_50%_at_78%_0%,#071d24ee_0%,#03090d00_70%)]"
+          className="nebula-blob"
+          style={{
+            width: "50vw",
+            height: "40vh",
+            top: "-20%",
+            right: "-10%",
+            background: "radial-gradient(ellipse, rgba(57,255,101,0.08) 0%, transparent 70%)",
+          }}
         />
+
         <div className="container-guild relative">
           <Reveal className="flex flex-col gap-6">
             <span className="eyebrow">THE DIRECTORY</span>
-            <h1 className="max-w-3xl font-display text-[clamp(2.4rem,4.6vw,4.6rem)] font-bold leading-[1.03] text-ice-white text-balance">
-              Five applications.
-              <span className="block bg-clip-text text-transparent bg-gradient-to-r from-cyan-electric to-neon-green">
+            <h1 className="max-w-3xl font-display text-[clamp(2.6rem,5vw,5rem)] font-bold leading-[1.02] text-ice-white text-balance">
+              Five applications.{" "}
+              <span
+                className="bg-clip-text text-transparent"
+                style={{
+                  backgroundImage: "linear-gradient(135deg, #00e5ff 0%, #39ff65 100%)",
+                }}
+              >
                 Zero filler.
               </span>
             </h1>
             <p className="max-w-2xl text-lg leading-relaxed text-mist">
-              Everything in this directory runs — verified against the actual
-              shipped builds. Products are never merged: ULTRON 2.0 has its
-              own Connector, JARVIS 2.0 has its own Phone. Availability is
-              shown exactly as it stands today.
+              Every product in this directory runs — verified against actual shipped builds.
+              Products are never merged: ULTRON 2.0 has its own Connector, JARVIS 2.0
+              has its own Phone. Availability is shown exactly as it stands today.
             </p>
             <div className="flex flex-wrap items-center gap-3">
               <StatusBadge label="All five released" />
-              <StatusBadge label="Windows &amp; Android" tone="calm" />
+              <StatusBadge label="Windows & Android" tone="calm" />
             </div>
+          </Reveal>
+
+          {/* Quick product mini-nav */}
+          <Reveal delay={100} className="mt-10 flex flex-wrap gap-2">
+            {PRODUCTS.map((p) => (
+              <a
+                key={p.id}
+                href={`/products/${p.id}`}
+                className="inline-flex items-center gap-2 rounded-full border border-hairline bg-void/60 px-4 py-2 font-mono text-[0.7rem] uppercase tracking-[0.2em] text-muted-grey hover:border-cyan-electric/40 hover:text-ice-white transition-colors backdrop-blur-sm"
+              >
+                <span
+                  className="size-1.5 rounded-full shrink-0"
+                  style={{
+                    background: PLATFORM_COLORS[p.accent],
+                    boxShadow: `0 0 6px ${PLATFORM_COLORS[p.accent]}88`,
+                  }}
+                  aria-hidden="true"
+                />
+                {p.name}
+              </a>
+            ))}
           </Reveal>
         </div>
       </section>
 
-      {/* Product directory */}
+      {/* ── Product Cards Grid ── */}
       <section className="pb-20">
         <div className="container-guild">
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -62,9 +107,20 @@ export default function EcosystemPage() {
         </div>
       </section>
 
-      {/* How the ecosystem connects */}
-      <section className="border-t border-hairline py-24">
-        <div className="container-guild">
+      {/* ── Ecosystem Connection Map ── */}
+      <section className="border-t border-hairline py-24 relative">
+        <div
+          aria-hidden="true"
+          className="nebula-blob"
+          style={{
+            width: "40vw",
+            height: "40vh",
+            top: "20%",
+            left: "-15%",
+            background: "radial-gradient(ellipse, rgba(0,229,255,0.06) 0%, transparent 70%)",
+          }}
+        />
+        <div className="container-guild relative z-10">
           <Reveal>
             <SectionHeading
               eyebrow="SYSTEM MAP"
@@ -74,41 +130,57 @@ export default function EcosystemPage() {
           </Reveal>
 
           <div className="mt-12 grid gap-6 lg:grid-cols-2">
-            <Reveal className="panel flex flex-col gap-5 p-8">
-              <div className="flex items-center gap-3 font-mono text-micro uppercase tracking-[0.26em]">
-                <span className="text-[#ffb300]">UL</span>
-                <span className="text-muted-grey">pairing bridge</span>
-                <span aria-hidden="true" className="text-muted-grey">—</span>
-                <span className="text-cyan-electric">CN</span>
+            {/* ULTRON pair */}
+            <Reveal className="holo-card flex flex-col gap-5 p-8">
+              <div className="flex items-center gap-3">
+                <span className="font-mono text-micro uppercase tracking-[0.26em] text-[#ffb300]">ULTRON 2.0</span>
+                <span className="font-mono text-micro text-muted-grey">↔</span>
+                <span className="font-mono text-micro uppercase tracking-[0.26em] text-cyan-electric">Connector</span>
               </div>
               <h3 className="font-display text-[1.5rem] text-ice-white">
-                ULTRON 2.0 ↔ ULTRON 2.0 Connector
+                Desktop ↔ Android gateway
               </h3>
               <p className="text-[15px] leading-relaxed text-mist">
                 The desktop build embeds a FastAPI + WebSocket gateway with
                 device pairing, capability tracking and a command router. The
-                Connector app pairs with it over the local network through an
+                Connector app pairs over the local network through an
                 authenticated, revocable handshake.
               </p>
-              <div className="mt-2 flex flex-wrap gap-3">
-                <CtaLink href="/products/ultron-2" variant="ghost">
-                  ULTRON 2.0
-                </CtaLink>
-                <CtaLink href="/products/ultron-2-connector" variant="ghost">
-                  Connector
-                </CtaLink>
+              {/* Connection visualization */}
+              <div className="flex items-center gap-3 rounded-xl border border-hairline bg-void/60 p-3">
+                <div className="flex flex-col items-center">
+                  <div className="size-8 rounded-lg border border-[#ffb300]/40 bg-[#ffb300]/10 grid place-items-center">
+                    <span className="font-mono text-[0.6rem] font-bold text-[#ffb300]">PC</span>
+                  </div>
+                  <span className="mt-1 font-mono text-[0.5rem] text-muted-grey">ULTRON 2.0</span>
+                </div>
+                <div className="flex-1 flex items-center gap-1">
+                  <div className="flex-1 h-px bg-gradient-to-r from-[#ffb300]/40 to-cyan-electric/40" />
+                  <span className="font-mono text-[0.55rem] text-muted-grey px-2">WebSocket</span>
+                  <div className="flex-1 h-px bg-gradient-to-l from-[#ffb300]/40 to-cyan-electric/40" />
+                </div>
+                <div className="flex flex-col items-center">
+                  <div className="size-8 rounded-lg border border-cyan-electric/40 bg-cyan-electric/10 grid place-items-center">
+                    <span className="font-mono text-[0.6rem] font-bold text-cyan-electric">📱</span>
+                  </div>
+                  <span className="mt-1 font-mono text-[0.5rem] text-muted-grey">Connector</span>
+                </div>
+              </div>
+              <div className="flex flex-wrap gap-3">
+                <CtaLink href="/products/ultron-2" variant="ghost">ULTRON 2.0</CtaLink>
+                <CtaLink href="/products/ultron-2-connector" variant="ghost">Connector</CtaLink>
               </div>
             </Reveal>
 
-            <Reveal delay={100} className="panel flex flex-col gap-5 p-8">
-              <div className="flex items-center gap-3 font-mono text-micro uppercase tracking-[0.26em]">
-                <span className="text-[#ff1744]">JA</span>
-                <span className="text-muted-grey">family line</span>
-                <span aria-hidden="true" className="text-muted-grey">—</span>
-                <span className="text-violet-400">PH</span>
+            {/* JARVIS pair */}
+            <Reveal delay={100} className="holo-card flex flex-col gap-5 p-8">
+              <div className="flex items-center gap-3">
+                <span className="font-mono text-micro uppercase tracking-[0.26em] text-[#ff1744]">JARVIS 2.0</span>
+                <span className="font-mono text-micro text-muted-grey">↔</span>
+                <span className="font-mono text-micro uppercase tracking-[0.26em] text-violet-400">Phone</span>
               </div>
               <h3 className="font-display text-[1.5rem] text-ice-white">
-                JARVIS 2.0 ↔ JARVIS 2.0 Phone
+                Desktop ↔ Android family
               </h3>
               <p className="text-[15px] leading-relaxed text-mist">
                 The same assistant personality in two deliberate shapes: the
@@ -116,22 +188,41 @@ export default function EcosystemPage() {
                 with offline local voice recognition and a floating HUD.
                 Separate packages, separate responsibilities.
               </p>
-              <div className="mt-2 flex flex-wrap gap-3">
-                <CtaLink href="/products/jarvis-2" variant="ghost">
-                  JARVIS 2.0
-                </CtaLink>
-                <CtaLink href="/products/jarvis-2-phone" variant="ghost">
-                  JARVIS 2.0 Phone
-                </CtaLink>
+              {/* Family visualization */}
+              <div className="flex items-center gap-3 rounded-xl border border-hairline bg-void/60 p-3">
+                <div className="flex flex-col items-center">
+                  <div className="size-8 rounded-lg border border-[#ff1744]/40 bg-[#ff1744]/10 grid place-items-center">
+                    <span className="font-mono text-[0.6rem] font-bold text-[#ff1744]">🖥</span>
+                  </div>
+                  <span className="mt-1 font-mono text-[0.5rem] text-muted-grey">JARVIS 2.0</span>
+                </div>
+                <div className="flex-1 flex items-center gap-1">
+                  <div className="flex-1 h-px bg-gradient-to-r from-[#ff1744]/40 to-violet-500/40" />
+                  <span className="font-mono text-[0.55rem] text-muted-grey px-2">Family</span>
+                  <div className="flex-1 h-px bg-gradient-to-l from-[#ff1744]/40 to-violet-500/40" />
+                </div>
+                <div className="flex flex-col items-center">
+                  <div className="size-8 rounded-lg border border-violet-500/40 bg-violet-500/10 grid place-items-center">
+                    <span className="font-mono text-[0.6rem] font-bold text-violet-400">📱</span>
+                  </div>
+                  <span className="mt-1 font-mono text-[0.5rem] text-muted-grey">Phone</span>
+                </div>
+              </div>
+              <div className="flex flex-wrap gap-3">
+                <CtaLink href="/products/jarvis-2" variant="ghost">JARVIS 2.0</CtaLink>
+                <CtaLink href="/products/jarvis-2-phone" variant="ghost">JARVIS 2.0 Phone</CtaLink>
               </div>
             </Reveal>
           </div>
 
-          {/* Honest note — updated to reflect public release */}
-          <Reveal delay={80} className="panel mt-6 flex flex-col gap-4 p-7 lg:p-9">
-            <p className="font-mono text-micro uppercase tracking-[0.28em] text-neon-green">
-              Availability, stated plainly
-            </p>
+          {/* Honest availability note */}
+          <Reveal delay={80} className="mt-6 holo-card flex flex-col gap-4 p-7 lg:p-9">
+            <div className="flex items-center gap-2">
+              <span className="size-2 rounded-full bg-neon-green animate-pulse" aria-hidden="true" />
+              <p className="font-mono text-micro uppercase tracking-[0.28em] text-neon-green">
+                Availability, stated plainly
+              </p>
+            </div>
             <p className="max-w-3xl text-[15px] leading-relaxed text-mist">
               All five applications are built, packaged and now publicly
               available for direct download. Every release carries a verified
@@ -151,7 +242,7 @@ export default function EcosystemPage() {
             <CtaLink href="/downloads" ariaLabel="Go to the Download Centre">
               Download the apps
             </CtaLink>
-            <CtaLink href="/products/friday-ai" variant="secondary" ariaLabel="View F.R.I.D.A.Y. AI product page">
+            <CtaLink href="/products/friday-ai" variant="secondary" ariaLabel="View F.R.I.D.A.Y. AI">
               Start with F.R.I.D.A.Y. AI
             </CtaLink>
             <CtaLink href="/about" variant="ghost" ariaLabel="About Growth Guild Labs">

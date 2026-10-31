@@ -43,31 +43,50 @@ export default function AboutPage() {
     <>
       {/* ── Hero ── */}
       <section className="relative overflow-hidden pt-40 pb-16">
+        <div aria-hidden="true" className="absolute inset-0 page-hero-bg" />
+        <div aria-hidden="true" className="cyber-grid opacity-[0.02]" />
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute inset-0 bg-[radial-gradient(55%_45%_at_14%_0%,#071d24ee_0%,transparent_70%)]"
+          className="nebula-blob"
+          style={{
+            width: "45vw",
+            height: "40vh",
+            top: "-15%",
+            left: "-10%",
+            background: "radial-gradient(ellipse, rgba(0,229,255,0.08) 0%, transparent 70%)",
+          }}
         />
-        <div className="container-guild relative flex flex-col gap-6">
+        <div className="container-guild relative z-10 flex flex-col gap-6">
           <div className="flex items-center gap-5">
-            <Image
-              src="/brand/ggl-emblem-badge.png"
-              alt="Growth Guild Labs hexagonal badge"
-              width={72}
-              height={72}
-              className="rounded-xl border border-cyan-electric/30 bg-void/60 p-1 shadow-glow-cyan"
-              priority
-            />
+            <div className="relative">
+              <div
+                aria-hidden="true"
+                className="absolute inset-0 rounded-xl blur-lg opacity-70"
+                style={{ background: "rgba(0,229,255,0.3)" }}
+              />
+              <Image
+                src="/brand/growth-guild-labs-logo.png"
+                alt="Growth Guild Labs logo"
+                width={72}
+                height={72}
+                className="relative rounded-xl border border-cyan-electric/40 bg-void/80 p-1 nav-logo-glow"
+                priority
+              />
+            </div>
             <span className="eyebrow">ABOUT THE PROJECT</span>
           </div>
           <h1 className="max-w-4xl font-display text-[clamp(2.4rem,4.6vw,4.4rem)] font-bold leading-[1.03] text-ice-white text-balance">
             Two builders. One guild.
-            <span className="block bg-clip-text text-transparent bg-gradient-to-r from-cyan-electric to-neon-green">
+            <span
+              className="block bg-clip-text text-transparent"
+              style={{ backgroundImage: "linear-gradient(135deg, #00e5ff 0%, #39ff65 100%)" }}
+            >
               Five working applications.
             </span>
           </h1>
           <blockquote className="max-w-2xl border-l-2 border-cyan-electric/50 pl-5 text-lg leading-relaxed text-mist">
-            “Exploring AI, software, and digital experiences that push ideas
-            beyond the ordinary.”
+            &ldquo;Exploring AI, software, and digital experiences that push ideas
+            beyond the ordinary.&rdquo;
           </blockquote>
           <p className="max-w-2xl text-[15px] leading-relaxed text-muted-grey">
             That statement is the project&apos;s own description — kept here
@@ -94,15 +113,17 @@ export default function AboutPage() {
                 name: "Zaid Uddin",
                 role: "CEO & Founder",
                 initials: "ZU",
+                desc: "Lead system architect, PyQt6 core designer, and AI voice pipeline builder behind ULTRON 2.0 and F.R.I.D.A.Y.",
               },
               {
                 name: "Idrees Uddin",
                 role: "Co-founder",
                 initials: "IU",
+                desc: "Systems engineering, companion gateway bridging, and hardware testing lead for the Android companion builds.",
               },
             ].map((person, i) => (
               <Reveal key={person.name} delay={i * 100} className="h-full">
-                <div className="panel flex h-full flex-col justify-between gap-12 p-8">
+                <div className="person-card h-full flex flex-col justify-between gap-12">
                   <div className="flex items-center justify-between gap-4">
                     <span
                       aria-hidden="true"
@@ -116,11 +137,16 @@ export default function AboutPage() {
                     <p className="font-display text-2xl text-ice-white">
                       {person.name}
                     </p>
+                    <p className="mt-1 font-mono text-micro uppercase tracking-[0.24em] text-cyan-electric">
+                      {person.role}
+                    </p>
                     <p className="mt-3 text-[14px] leading-relaxed text-mist">
-                     Named in the shipped product files — “The CEO and Founder
-                      is Zaid Uddin, and the Co-Founder is Idrees Uddin” —
-                      which is exactly why this site can say it in these
-                      words.
+                      {person.desc}
+                    </p>
+                    <p className="mt-3 text-[13px] leading-relaxed text-muted-grey">
+                      Named in the shipped product files — &ldquo;The CEO and Founder
+                      is Zaid Uddin, and the Co-Founder is Idrees Uddin&rdquo; —
+                      which is exactly why this site can say it in these words.
                     </p>
                   </div>
                 </div>
@@ -148,13 +174,24 @@ export default function AboutPage() {
                     href={productHref(p.id)}
                     className="group flex items-center justify-between gap-6 px-6 py-5 transition-colors duration-300 hover:bg-cyan-electric/5"
                   >
-                    <div className="min-w-0">
-                      <span className="block font-display text-lg text-ice-white">
-                        {p.name}
-                      </span>
-                      <span className="mt-0.5 block text-[13px] text-muted-grey">
-                        {p.role}
-                      </span>
+                    <div className="min-w-0 flex items-center gap-3">
+                      <span
+                        className="size-2 rounded-full shrink-0"
+                        style={{
+                          background: p.accent === "gold" ? "#ffb300" :
+                            p.accent === "cyan" ? "#00e5ff" :
+                            p.accent === "red" ? "#ff1744" : "#7c5cff",
+                        }}
+                        aria-hidden="true"
+                      />
+                      <div>
+                        <span className="block font-display text-lg text-ice-white">
+                          {p.name}
+                        </span>
+                        <span className="mt-0.5 block text-[13px] text-muted-grey">
+                          {p.role}
+                        </span>
+                      </div>
                     </div>
                     <span className="hidden flex-wrap justify-end gap-2 sm:flex">
                       {p.chips.slice(0, 2).map((chip) => (
@@ -178,8 +215,19 @@ export default function AboutPage() {
       </section>
 
       {/* ── Principles ── */}
-      <section className="border-t border-hairline py-24">
-        <div className="container-guild">
+      <section className="border-t border-hairline py-24 relative overflow-hidden">
+        <div
+          aria-hidden="true"
+          className="nebula-blob"
+          style={{
+            width: "45vw",
+            height: "40vh",
+            top: "10%",
+            right: "-15%",
+            background: "radial-gradient(ellipse, rgba(57,255,101,0.06) 0%, transparent 70%)",
+          }}
+        />
+        <div className="container-guild relative z-10">
           <Reveal>
             <SectionHeading
               eyebrow="PRINCIPLES"
@@ -190,7 +238,7 @@ export default function AboutPage() {
           <div className="mt-12 grid gap-6 md:grid-cols-2">
             {PRINCIPLES.map((principle, i) => (
               <Reveal key={principle.title} delay={i * 70} className="h-full">
-                <div className="panel h-full p-7">
+                <div className="holo-card h-full p-7">
                   <h3 className="font-display text-xl text-ice-white">
                     {principle.title}
                   </h3>
@@ -205,8 +253,23 @@ export default function AboutPage() {
       </section>
 
       {/* ── Contact ── */}
-      <section className="border-t border-hairline bg-[linear-gradient(180deg,#03090d,#071d24_130%)] py-24">
-        <div className="container-guild flex flex-col items-start gap-8">
+      <section
+        className="border-t border-hairline py-24 relative overflow-hidden"
+        style={{ background: "linear-gradient(180deg, #03090d, #071d24 130%)" }}
+      >
+        <div
+          aria-hidden="true"
+          className="nebula-blob"
+          style={{
+            width: "50vw",
+            height: "40vh",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+            background: "radial-gradient(ellipse, rgba(0,229,255,0.06) 0%, transparent 70%)",
+          }}
+        />
+        <div className="container-guild relative z-10 flex flex-col items-start gap-8">
           <Reveal className="flex flex-col gap-5">
             <span className="eyebrow">SAY HELLO</span>
             <h2 className="max-w-2xl font-display text-title text-ice-white">

@@ -42,14 +42,13 @@ export default function PrivacyPage() {
           <Reveal className="panel p-8 sm:p-10">
             <span className="eyebrow">SCOPE</span>
             <h2 className="mt-4 font-display text-[1.5rem] text-ice-white">
-              This covers the website, not the products
+              This covers the website and download packages
             </h2>
             <p className="mt-3 max-w-3xl text-[15px] leading-relaxed text-mist">
-              This statement describes this website only. The five
-              applications are not publicly distributed yet, so they are
-              outside the scope of this page today. If and when a public
-              release happens, the released software would need — and would
-              get — its own accurate documentation.
+              This statement describes this website and the download verification process.
+              The five applications are packaged and verified with published SHA-256 checksums
+              in the Download Centre. Android companion packages connect directly over your local
+              Wi-Fi network to the desktop gateway without requiring any external cloud relay.
             </p>
           </Reveal>
 

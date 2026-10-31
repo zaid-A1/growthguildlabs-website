@@ -19,16 +19,34 @@ export default function DownloadsPage() {
     <>
       {/* ── Hero ── */}
       <section className="relative overflow-hidden pt-40 pb-16">
+        {/* Background */}
+        <div aria-hidden="true" className="absolute inset-0 page-hero-bg" />
+        <div aria-hidden="true" className="cyber-grid opacity-[0.02]" />
+
+        {/* Nebula accent */}
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute inset-0 bg-[radial-gradient(60%_50%_at_50%_0%,#071d24ee_0%,#03090d00_70%)]"
+          className="nebula-blob"
+          style={{
+            width: "55vw",
+            height: "45vh",
+            top: "-20%",
+            left: "-15%",
+            background: "radial-gradient(ellipse, rgba(57,255,101,0.07) 0%, transparent 70%)",
+          }}
         />
-        <div className="container-guild relative">
+
+        <div className="container-guild relative z-10">
           <Reveal className="flex flex-col gap-6">
             <span className="eyebrow">DOWNLOAD CENTRE</span>
             <h1 className="max-w-4xl font-display text-[clamp(2.4rem,4.6vw,4.6rem)] font-bold leading-[1.03] text-ice-white text-balance">
-              Genuine releases.
-              <span className="block bg-clip-text text-transparent bg-gradient-to-r from-cyan-electric via-[#7fe9ff] to-neon-green">
+              Genuine releases.{" "}
+              <span
+                className="bg-clip-text text-transparent"
+                style={{
+                  backgroundImage: "linear-gradient(135deg, #00e5ff 0%, #39ff65 100%)",
+                }}
+              >
                 Direct from the guild.
               </span>
             </h1>
@@ -37,6 +55,28 @@ export default function DownloadsPage() {
               Every file is mathematically verified with its official SHA-256 checksum,
               exact binary size, and step-by-step installation instructions.
             </p>
+
+            {/* Integrity badges */}
+            <div className="flex flex-wrap gap-3">
+              {[
+                { label: "5 / 5 Packages Verified", color: "#39ff65" },
+                { label: "SHA-256 Checksums", color: "#00e5ff" },
+                { label: "Windows & Android", color: "#ffb300" },
+              ].map((b) => (
+                <span
+                  key={b.label}
+                  className="inline-flex items-center gap-2 rounded-full border px-4 py-1.5 font-mono text-[0.7rem] uppercase tracking-[0.2em]"
+                  style={{
+                    borderColor: `${b.color}44`,
+                    color: b.color,
+                    background: `${b.color}10`,
+                  }}
+                >
+                  <span className="size-1.5 rounded-full animate-pulse" style={{ background: b.color }} aria-hidden="true" />
+                  {b.label}
+                </span>
+              ))}
+            </div>
           </Reveal>
         </div>
       </section>
@@ -49,8 +89,19 @@ export default function DownloadsPage() {
       </section>
 
       {/* ── Verification Guide ── */}
-      <section className="border-t border-hairline py-20 bg-void/60">
-        <div className="container-guild">
+      <section className="border-t border-hairline py-20 relative">
+        <div
+          aria-hidden="true"
+          className="nebula-blob"
+          style={{
+            width: "40vw",
+            height: "35vh",
+            bottom: "-10%",
+            right: "-10%",
+            background: "radial-gradient(ellipse, rgba(0,229,255,0.06) 0%, transparent 70%)",
+          }}
+        />
+        <div className="container-guild relative z-10">
           <Reveal>
             <SectionHeading
               eyebrow="INTEGRITY & TRUST"
@@ -60,38 +111,50 @@ export default function DownloadsPage() {
           </Reveal>
 
           <div className="mt-10 grid gap-6 md:grid-cols-2">
-            <Reveal className="panel p-6 sm:p-8 flex flex-col justify-between">
-              <div>
-                <p className="font-mono text-micro uppercase tracking-[0.28em] text-cyan-electric">
+            <Reveal className="terminal-window">
+              <div className="terminal-titlebar">
+                <div className="terminal-dot bg-[#ff5f57]" />
+                <div className="terminal-dot bg-[#febc2e]" />
+                <div className="terminal-dot bg-[#28c840]" />
+                <span className="ml-3 font-mono text-[0.65rem] text-muted-grey">Windows PowerShell</span>
+              </div>
+              <div className="p-5">
+                <p className="font-mono text-micro uppercase tracking-[0.28em] text-cyan-electric mb-2">
                   Windows PowerShell
                 </p>
-                <p className="mt-2 text-sm text-mist">
+                <p className="text-sm text-mist mb-4">
                   Open PowerShell in the folder where your file was downloaded and run:
                 </p>
-                <pre className="mt-4 overflow-x-auto rounded-xl border border-hairline bg-void/90 p-4 font-mono text-[0.8rem] text-ice-white">
+                <pre className="overflow-x-auto rounded-xl border border-hairline bg-void/90 p-4 font-mono text-[0.8rem] text-neon-green">
                   <code>Get-FileHash -Algorithm SHA256 .\FRIDAY_AI_v1.0_Windows.zip</code>
                 </pre>
+                <p className="mt-4 text-xs text-muted-grey">
+                  Compare the output string with the hash listed on this page.
+                </p>
               </div>
-              <p className="mt-4 text-xs text-muted-grey">
-                Compare the output string with the hash listed on this page.
-              </p>
             </Reveal>
 
-            <Reveal delay={100} className="panel p-6 sm:p-8 flex flex-col justify-between">
-              <div>
-                <p className="font-mono text-micro uppercase tracking-[0.28em] text-neon-green">
+            <Reveal delay={100} className="terminal-window">
+              <div className="terminal-titlebar">
+                <div className="terminal-dot bg-[#ff5f57]" />
+                <div className="terminal-dot bg-[#febc2e]" />
+                <div className="terminal-dot bg-[#28c840]" />
+                <span className="ml-3 font-mono text-[0.65rem] text-muted-grey">Terminal / Shell</span>
+              </div>
+              <div className="p-5">
+                <p className="font-mono text-micro uppercase tracking-[0.28em] text-neon-green mb-2">
                   macOS / Linux / WSL Terminal
                 </p>
-                <p className="mt-2 text-sm text-mist">
+                <p className="text-sm text-mist mb-4">
                   Open your terminal and run sha256sum on the downloaded package:
                 </p>
-                <pre className="mt-4 overflow-x-auto rounded-xl border border-hairline bg-void/90 p-4 font-mono text-[0.8rem] text-ice-white">
+                <pre className="overflow-x-auto rounded-xl border border-hairline bg-void/90 p-4 font-mono text-[0.8rem] text-neon-green">
                   <code>sha256sum ULTRON_2.0_Connect.apk</code>
                 </pre>
+                <p className="mt-4 text-xs text-muted-grey">
+                  The computed hash must match the verified manifest hash character for character.
+                </p>
               </div>
-              <p className="mt-4 text-xs text-muted-grey">
-                The computed hash must match the verified manifest hash character for character.
-              </p>
             </Reveal>
           </div>
         </div>

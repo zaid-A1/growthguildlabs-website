@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
@@ -221,18 +222,19 @@ export function SiteHeader() {
             className="group flex items-center gap-3"
             aria-label="Growth Guild Labs — home"
           >
-            {/* Brand mark */}
-            <span className="relative grid size-9.5 place-items-center">
+            {/* Brand mark — logo image with glow */}
+            <span className="relative flex items-center justify-center">
               <span
                 aria-hidden="true"
-                className="absolute inset-0 rounded-xl bg-cyan-electric/20 blur-[8px] transition-opacity duration-500 group-hover:opacity-100"
+                className="absolute inset-0 rounded-xl bg-cyan-electric/25 blur-[10px] opacity-60 group-hover:opacity-100 transition-opacity duration-500"
               />
-              <span
-                aria-hidden="true"
-                className="relative grid size-9.5 place-items-center rounded-xl border border-cyan-electric/50 bg-void/90 font-display text-[0.75rem] font-bold tracking-widest text-cyan-electric shadow-[0_0_12px_rgba(0,229,255,0.3)] transition-transform duration-300 group-hover:scale-105"
-              >
-                GGL
-              </span>
+              <Image
+                src="/brand/growth-guild-labs-logo.png"
+                alt="Growth Guild Labs"
+                width={38}
+                height={38}
+                className="relative rounded-xl border border-cyan-electric/40 bg-void/80 p-0.5 transition-transform duration-300 group-hover:scale-105 nav-logo-glow"
+              />
             </span>
             <span className="flex flex-col leading-none">
               <span className="font-display text-[0.95rem] font-bold tracking-wider text-ice-white group-hover:text-cyan-electric transition-colors">

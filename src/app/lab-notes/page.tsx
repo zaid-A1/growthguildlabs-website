@@ -15,19 +15,19 @@ export const metadata: Metadata = buildMetadata({
    *planned* writing, never as published entries. */
 const PLANNED_SUBJECTS = [
   {
-    label: "Interaction systems",
+    label: "Interaction systems & Voice AI",
     detail:
-      "Wake words, push-to-talk, HUDs and avatars — how the assistants are actually operated.",
+      "Wake words (openWakeWord, Vosk), push-to-talk, Three.js HUDs, and 3D lip-synced viseme avatars — how the assistants are actually operated.",
   },
   {
-    label: "Packaging & pairing",
+    label: "Packaging & Companion Gateways",
     detail:
-      "Exe packaging and the desktop-to-phone gateway used by the ULTRON 2.0 Connector.",
+      "Standalone Windows executables (PyInstaller/PyQt6) and the local WebSocket pairing gateway powering the ULTRON 2.0 Connector.",
   },
   {
-    label: "Reliability & self-extension",
+    label: "Autonomous Skills & Self-Extension",
     detail:
-      "Long-session memory, undo and confirm-gates, and one-file plugin growth.",
+      "ULTRON 2.0's dynamic skill code generation, long-session memory compression, confirm-gates, and one-file FastMCP plugin growth.",
   },
 ];
 
@@ -36,15 +36,29 @@ export default function LabNotesPage() {
     <>
       {/* ── Hero ── */}
       <section className="relative overflow-hidden pt-40 pb-16">
+        <div aria-hidden="true" className="absolute inset-0 page-hero-bg" />
+        <div aria-hidden="true" className="cyber-grid opacity-[0.02]" />
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute inset-0 bg-[radial-gradient(55%_50%_at_80%_0%,#071d24ee_0%,transparent_70%)]"
+          className="nebula-blob"
+          style={{
+            width: "50vw",
+            height: "40vh",
+            top: "-15%",
+            right: "-10%",
+            background: "radial-gradient(ellipse, rgba(0,229,255,0.08) 0%, transparent 70%)",
+          }}
         />
-        <div className="container-guild relative flex flex-col gap-6">
-          <span className="eyebrow">LAB NOTES · INDEX</span>
+        <div className="container-guild relative z-10 flex flex-col gap-6">
+          <span className="eyebrow">LAB NOTES · ARCHIVE & TELEMETRY</span>
           <h1 className="max-w-4xl font-display text-[clamp(2.4rem,4.6vw,4.4rem)] font-bold leading-[1.03] text-ice-white text-balance">
             Notes land here as the work lands.
-            <span className="block text-muted-grey">Until then, the shelf stays empty.</span>
+            <span
+              className="block bg-clip-text text-transparent"
+              style={{ backgroundImage: "linear-gradient(135deg, #00e5ff 0%, #39ff65 100%)" }}
+            >
+              Until then, the shelf stays empty.
+            </span>
           </h1>
           <p className="max-w-2xl text-lg leading-relaxed text-mist">
             This page is the archive for engineering notes, teardown-style
@@ -56,17 +70,16 @@ export default function LabNotesPage() {
       </section>
 
       {/* ── Honest empty state ── */}
-      <section className="pb-20">
+      <section className="pb-20 relative">
         <div className="container-guild">
-          <Reveal className="panel hud-frame relative p-10 text-center sm:p-14">
-            <p
-              className="font-mono text-micro uppercase tracking-[0.34em] text-muted-grey"
-              aria-hidden="true"
-              style={{ "--frame-accent": "#00e5ff55" } as React.CSSProperties}
-            >
-              Index status
-            </p>
-            <p className="mt-6 font-display text-[clamp(1.7rem,3vw,2.6rem)] text-ice-white">
+          <Reveal className="terminal-window p-8 text-center sm:p-14">
+            <div className="flex items-center justify-center gap-2 mb-4">
+              <span className="size-2 rounded-full bg-cyan-electric animate-pulse" aria-hidden="true" />
+              <p className="font-mono text-micro uppercase tracking-[0.34em] text-cyan-electric">
+                INDEX STATUS TELEMETRY
+              </p>
+            </div>
+            <p className="font-display text-[clamp(2rem,4vw,3.2rem)] font-bold text-ice-white">
               0 notes published
             </p>
             <p className="mx-auto mt-4 max-w-xl text-[15px] leading-relaxed text-mist">
@@ -75,20 +88,34 @@ export default function LabNotesPage() {
               complete, dated and honest.
             </p>
             <div className="mt-8 flex flex-wrap justify-center gap-2">
-              <span className="spec-chip" aria-hidden="true">
+              <span className="spec-chip spec-chip--lit" aria-hidden="true">
                 EMPTY BY DESIGN
               </span>
               <span className="spec-chip" aria-hidden="true">
-                NO FILLER
+                NO FILLER ARTICLES
+              </span>
+              <span className="spec-chip" aria-hidden="true">
+                VERIFIED LOGS ONLY
               </span>
             </div>
           </Reveal>
         </div>
       </section>
 
-      {/* ── Planned subjects (intent, not content) ── */}
-      <section className="border-t border-hairline py-24">
-        <div className="container-guild">
+      {/* ── Planned subjects ── */}
+      <section className="border-t border-hairline py-24 relative overflow-hidden">
+        <div
+          aria-hidden="true"
+          className="nebula-blob"
+          style={{
+            width: "45vw",
+            height: "40vh",
+            bottom: "-15%",
+            left: "-10%",
+            background: "radial-gradient(ellipse, rgba(124,92,255,0.06) 0%, transparent 70%)",
+          }}
+        />
+        <div className="container-guild relative z-10">
           <Reveal className="flex flex-col gap-4">
             <span className="eyebrow">PLANNED SUBJECTS — INTENT, NOT CONTENT</span>
             <h2 className="max-w-3xl font-display text-title text-ice-white">
@@ -100,51 +127,53 @@ export default function LabNotesPage() {
               this list simply marks where writing will start.
             </p>
           </Reveal>
-          <div className="mt-10 grid gap-6 md:grid-cols-3">
-            {PLANNED_SUBJECTS.map((s, i) => (
-              <Reveal key={s.label} delay={i * 80} className="h-full">
-                <div className="panel h-full flex flex-col gap-3 p-7">
-                  <span
-                    className="font-mono text-micro text-muted-grey"
-                    aria-hidden="true"
-                  >
-                    PLANNED · 0{i + 1}
-                  </span>
-                  <h3 className="font-display text-lg text-ice-white">
-                    {s.label}
-                  </h3>
-                  <p className="text-[14px] leading-relaxed text-mist">
-                    {s.detail}
-                  </p>
+
+          <div className="mt-12 grid gap-6 md:grid-cols-3">
+            {PLANNED_SUBJECTS.map((s, idx) => (
+              <Reveal key={s.label} delay={idx * 80} className="h-full">
+                <div className="holo-card h-full p-7 flex flex-col justify-between gap-6">
+                  <div>
+                    <div className="flex items-center justify-between mb-4">
+                      <span className="font-mono text-micro text-cyan-electric">0{idx + 1}</span>
+                      <span className="font-mono text-[0.6rem] uppercase tracking-wider text-muted-grey">PLANNED</span>
+                    </div>
+                    <h3 className="font-display text-lg text-ice-white">
+                      {s.label}
+                    </h3>
+                    <p className="mt-3 text-[14px] leading-relaxed text-mist">
+                      {s.detail}
+                    </p>
+                  </div>
+                  <div className="border-t border-hairline pt-3 font-mono text-[0.62rem] text-muted-grey">
+                    GROWTH GUILD LABS // DEV TRACK
+                  </div>
                 </div>
               </Reveal>
             ))}
           </div>
 
-          <Reveal delay={120} className="mt-12 flex flex-wrap gap-4">
-            <CtaLink href="/ecosystem" ariaLabel="Explore the ecosystem while the archive grows">
-              Explore the ecosystem meanwhile
-            </CtaLink>
-          </Reveal>
-        </div>
-      </section>
+          <div className="section-divider my-16" />
 
-      {/* ── Follow the build ── */}
-      <section className="border-t border-hairline bg-[linear-gradient(180deg,#03090d,#071d24_130%)] py-20">
-        <div className="container-guild flex flex-col items-start gap-8">
-          <Reveal className="flex flex-col gap-4">
-            <span className="eyebrow">FOLLOW THE BUILD</span>
-            <h2 className="max-w-2xl font-display text-title text-ice-white">
-              The closest thing to lab notes today
-            </h2>
-            <p className="max-w-xl text-[15px] leading-relaxed text-mist">
-              Progress shows up on the social channels before it becomes a
-              written note. That is the honest cadence of the project for now.
-            </p>
-          </Reveal>
-          <Reveal delay={110}>
-            <SocialLinks />
-          </Reveal>
+          {/* Connect band */}
+          <div className="flex flex-col items-start gap-8">
+            <Reveal className="flex flex-col gap-3">
+              <span className="eyebrow">FOLLOW THE WORK IN REAL TIME</span>
+              <p className="max-w-xl text-lg text-mist">
+                Engineering progress is shared live across official broadcast channels.
+              </p>
+            </Reveal>
+            <Reveal delay={100}>
+              <SocialLinks />
+            </Reveal>
+            <Reveal delay={150} className="flex flex-wrap gap-4">
+              <CtaLink href="/downloads" ariaLabel="Download applications">
+                Download apps
+              </CtaLink>
+              <CtaLink href="/ecosystem" variant="secondary" ariaLabel="View the ecosystem">
+                Explore the ecosystem
+              </CtaLink>
+            </Reveal>
+          </div>
         </div>
       </section>
     </>

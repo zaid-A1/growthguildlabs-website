@@ -111,82 +111,67 @@ export const PRODUCTS: Product[] = [
     },
     featureGroups: [
       {
-        heading: "Desktop command",
+        heading: "Autonomous Skill Creation & Core Intelligence",
         capabilities: [
           {
-            title: "Windows orchestration",
+            title: "🧬 AI-Generated Skills",
             detail:
-              "The packaged desktop app (ULTRON2.exe, PyQt6) launches and manages applications, windows and processes as part of its action set.",
+              "Tell ULTRON 2.0 what you want it to do, and it can create the code for a new skill, register it dynamically, and execute the new capability without manual programming.",
           },
           {
-            title: "Files and settings",
+            title: "🤖 Multiple AI Models & APIQIK",
             detail:
-              "Shipped modules include file_controller, desktop_organizer_mcp, computer_settings and clipboard_processor — covering file operations, folder cleanup, system settings and clipboard actions.",
+              "ULTRON 2.0 works seamlessly with different AI models through integrations such as APIQIK and Gemini, giving the assistant flexibility in choosing the ideal neural model behind any task.",
           },
           {
-            title: "Browser & web",
+            title: "👁️ Screen Intelligence & Vision",
             detail:
-              "browser_control with a Playwright MCP client runs headless browsing sessions; web_search handles search requests.",
+              "ULTRON 2.0 can understand and analyze what is happening on your screen in real time, extracting context and using that visual information while executing multi-step tasks.",
           },
         ],
       },
       {
-        heading: "Document & content engine",
+        heading: "Desktop Orchestration & Hardware Workflows",
         capabilities: [
           {
-            title: "Office generation",
+            title: "🖥️ PC & Computer Control",
             detail:
-              "The prompt layer explicitly routes requests for decks, workbooks, spreadsheets and reports into its office generators (office_builder, ppt_template_workflow) to produce editable files.",
+              "The packaged desktop app (ULTRON2.exe, PyQt6) controls applications, manages running processes, organizes files, adjusts system settings, and executes desktop automations.",
           },
           {
-            title: "Office formats shipped",
+            title: "🌐 Browser Automation",
             detail:
-              "PyMuPDF / pdfminer, python-docx and openpyxl are bundled — structured PDFs, DOCX and XLSX generation is part of the built-in toolkit.",
+              "Navigate websites, click, type, interact with web pages, and perform multi-step web scraping and browser automation sessions via Playwright headless MCP client.",
           },
           {
-            title: "Awareness & assistant tools",
+            title: "📁 File & Document Handling",
             detail:
-              "screen_processor, attention card, calendar_scheduler, reminders, daily_briefing, meeting_assistant and weather_report are all part of the packaged action library.",
+              "Work directly with files, source code, and documents: structured PDF generation, DOCX/XLSX workbooks via bundled python-docx, openpyxl, and PyMuPDF.",
+          },
+          {
+            title: "🔌 Arduino & Sensor Workflows",
+            detail:
+              "Ask ULTRON 2.0 about electronic components and sensors to have it generate visual wiring diagrams and schematics to connect and understand them.",
           },
         ],
       },
       {
-        heading: "Companion integrations",
+        heading: "Connected Devices & The Planetary View",
         capabilities: [
           {
-            title: "Google Workspace MCP",
+            title: "📱 Connected Devices & Gateway",
             detail:
-              "A google_workspace_mcp action ships in the package — Google-account tooling is wired in at the action layer.",
+              "Connect ULTRON 2.0 with other devices over local WebSocket channels, extending the desktop assistant's capabilities directly to the mobile Connector app.",
           },
           {
-            title: "Instagram support",
+            title: "🌍 Interactive WebGL Globe",
             detail:
-              "instagram_mcp and instagram_chat actions are bundled for Instagram-connected tasks through the same tool interface.",
+              "A bundled Three.js planetary globe with Earth night textures and Leaflet maps allows you to visualize global locations and calculate aerial distances between different coordinates.",
           },
           {
-            title: "Model Context Protocol",
+            title: "⚡ Smart-Home & Network Watchdog",
             detail:
-              "Actions speak MCP: system_diagnostics_mcp, desktop_organizer_mcp, playwright_mcp_client, claude_code_bridge and more — the tool layer is protocol-structured, not ad-hoc.",
-          },
-        ],
-      },
-      {
-        heading: "The planetary view",
-        capabilities: [
-          {
-            title: "WebGL HoloGlobe",
-            detail:
-              "A bundled three.js globe (Earth night textures, Leaflet maps) handles flight-routes, radar coverage and location searches from the desktop.",
-          },
-          {
-            title: "Smart-home devices",
-            detail:
-              "smart_home providers with device imagery for lights, plugs, AC units, fans and TVs — direct device control sits inside the ecosystem.",
-          },
-          {
-            title: "Network watchdog",
-            detail:
-              "net_sentinel ships with its own HUD — an in-package network monitor that watches connectivity on your behalf.",
+              "Direct device control for smart-home units (lights, plugs, AC, TVs) and net_sentinel in-package network telemetry that watches connectivity on your behalf.",
           },
         ],
       },
@@ -354,94 +339,89 @@ export const PRODUCTS: Product[] = [
     imageCaption: "App icon shipped inside the JARVIS 2.0 Windows build.",
     chips: ["Windows", "Voice AI", "Avatar"],
     summary:
-      "JARVIS 2.0 is the guild's atmospheric voice assistant — a Windows desktop companion with a lip-synced 3D face, wake-word awareness, a long-term memory engine and a browser-based remote dashboard.",
+      "JARVIS 2.0 is the guild's atmospheric voice assistant — more than an assistant, a vision of the future exploring voice interaction, visual awareness, AI memory, coding assistance, web research, live system monitoring, and a remote dashboard. Built as part of the journey behind GROWTH GUILD by Mohammed Zaid Uddin Siddiqui.",
     seo: {
-      title: "JARVIS 2.0 — voice assistant with a 3D avatar",
+      title: "JARVIS 2.0 — voice assistant with a 3D avatar & vision",
       description:
-        "JARVIS 2.0 is a working Windows voice assistant from Growth Guild Labs: Gemini-powered conversation, a 3D face with viseme lip-sync, wake word, dashboard and plugin tooling.",
+        "JARVIS 2.0 is a futuristic Windows AI assistant concept and build from Growth Guild Labs: voice conversation, 3D face avatar, AI memory, code assistance, system control, and remote dashboard.",
     },
     status: {
       state: "Official Release (v1.0.0)",
-      note: "Packaged Windows x64 release build with verified SHA-256 checksum. Available in the Download Centre.",
+      note: "Packaged Windows x64 release build with verified SHA-256 checksum. Represents the J.A.R.V.I.S. 2.0 vision and active implementation.",
     },
     featureGroups: [
       {
-        heading: "Voice-first design",
+        heading: "🎙️ The Vision & Voice Interaction",
         capabilities: [
           {
-            title: "Wake word detection",
+            title: "🎙️ Voice & Natural Conversation",
             detail:
-              "A dedicated wake_word module listens locally, so the assistant wakes on a spoken trigger instead of listening to every word.",
+              "Local wake-word detection with honest two-way STT, TTS, and dedicated echo cancellation so the assistant wakes on spoken trigger and converses naturally.",
           },
           {
-            title: "Honest two-way voice",
+            title: "👁️ Visual Awareness & Screen Intelligence",
             detail:
-              "stt (speech recognition) and tts (synthetic voice) pair with an “echo” module to cancel its own audio — a deliberate anti-feedback design.",
+              "Visual perception engine capable of analyzing on-screen elements, windows, and graphical context to assist with real workflows.",
           },
           {
-            title: "Push-to-talk fallback",
+            title: "🧠 AI Memory Architecture",
             detail:
-              "config exposes push_to_talk and wake word toggles, because keyboards exist and sometimes you'd rather press a key than speak.",
+              "Persistent long-term memory engine (memory_manager with memory/long_term.json) that remembers user preferences and context across sessions.",
+          },
+          {
+            title: "💻 Code Assistance & Developer Tools",
+            detail:
+              "Dedicated code helper and developer tools for reading codebases, debugging scripts, and generating software components directly through voice commands.",
           },
         ],
       },
       {
-        heading: "The living avatar",
+        heading: "⚙️ System Control & Integrations",
         capabilities: [
           {
-            title: "A 3D face, not a sticker",
+            title: "⚙️ Complete System Control",
             detail:
-              "The package ships a face_model.obj with avatar_mesh and a dedicated viseme module — the face lip-syncs what it says, mesh and audio realigned together.",
+              "Control desktop applications, modify computer settings, manage audio/display, and automate repetitive operating system actions.",
           },
           {
-            title: "First-person identity",
+            title: "🌐 Web & Deep Research",
             detail:
-              "JARVIS 2.0's built-in prompt instructs it to speak about “my face” in the first person — the avatar is treated as its own face, not a graphic review panel.",
+              "Automated browser control, online information gathering, flight lookup, weather reports, and multi-source research grounding.",
           },
           {
-            title: "Configure-your-own HUD",
+            title: "🔌 Plugins & Extensible Integrations",
             detail:
-              "A hud_style setting (“face” illustrated in the shipped config) plus a user-configurable UI colour let the avatar personality be personalised, not hardcoded.",
+              "Modular plugin architecture allowing seamless addition of custom tools, API hooks, and third-party software connectors.",
+          },
+          {
+            title: "📊 Live System Monitoring",
+            detail:
+              "Real-time telemetric tracking of system health, active processes, resource utilization, and background network sentinels.",
+          },
+          {
+            title: "📱 Remote HTTPS Dashboard",
+            detail:
+              "TLS-secured web dashboard served with custom HTTPS certificates and an encrypted login vault for remote monitoring and mobile interaction.",
           },
         ],
       },
       {
-        heading: "Action family",
+        heading: "The Living 3D Avatar",
         capabilities: [
           {
-            title: "Computer & browser control",
+            title: "A 3D Face with Viseme Lip-Sync",
             detail:
-              "computer_control, computer_settings, browser_control, desktop, open_app and system_monitor take direct actionable paths in the desktop.",
+              "The package ships a 3D face_model.obj with avatar_mesh and dedicated visemes — the face lip-syncs what it speaks in real time.",
           },
           {
-            title: "Content engine",
+            title: "First-Person Identity",
             detail:
-              "file_controller + file_processor move, read and summarise files; send_message sends notifications; reminder and proactive reach out when you need to hear something.",
+              "Built-in prompt architecture where JARVIS treats the avatar as its own living face, creating an immersive, futuristic presence.",
           },
           {
-            title: "Life admin layer",
+            title: "Mark 85 Arc Core HUD",
             detail:
-              "weather_report, flight_finder, game_updater and code_helper cover weather, flights, game updates and code assist as part of the shipped toolset.",
-          },
-        ],
-      },
-      {
-        heading: "Dashboard & memory",
-        capabilities: [
-          {
-            title: "TLS-protected local dashboard",
-            detail:
-              "A bundled server serves app.html over HTTPS with its own certificates and an encrypted crypto-js login vault — a true word to the wise on browser control panels.",
-          },
-          {
-            title: "Long-term memory engine",
-            detail:
-              "memory/long_term.json and a memory_manager module persist what JARVIS learns between sessions.",
-          },
-          {
-            title: "Undo-able & confirm-gated",
-            detail:
-              "Shipped undo and confirm gates protect irreversible actions, aligned with the guild's 'asked-person-first' philosophy for trust-sensitive operations.",
+              "Carries a signature Iron Man inspired Mark 85 Arc Core visual HUD theme with red/gold palettes, glass panels, and a holo-grid backdrop.",
           },
         ],
       },
@@ -482,21 +462,21 @@ export const PRODUCTS: Product[] = [
   {
     id: "jarvis-2-phone",
     name: "JARVIS 2.0 Phone",
-    display: "J.A.R.V.I.S. 2.0 · PHONE",
-    role: "Compact voice experience for Android",
+    display: "J.A.R.V.I.S. AI · PHONE",
+    role: "Agentic AI Phone assistant & Android automation system",
     platform: "Android",
     packaging: "JARVIS_release.apk · signed Android package",
     accent: "violet",
     image: "/products/jarvis-2-phone.png",
     imageAlt: "Ghost avatar illustration from the JARVIS 2.0 Phone package",
     imageCaption: "Avatar artwork shipped inside the JARVIS 2.0 Phone APK.",
-    chips: ["Android", "Offline voice", "Floating HUD"],
+    chips: ["Android", "Agentic AI", "Offline voice", "Floating HUD"],
     summary:
-      "The phone-sized cut of the JARVIS family: an Android voice experience with local offline speech recognition, a floating transparent HUD and a collectible set of avatar companions dubbed “overlay toys”.",
+      "More than an assistant — it's your agent. Built around the vision of an intelligent, agentic personal assistant that understands goals, plans multi-step workflows, automates Android apps, and communicates in Hindi, English, and Hinglish.",
     seo: {
-      title: "JARVIS 2.0 Phone — offline voice companion for Android",
+      title: "JARVIS AI Phone — Agentic AI & Android Automation",
       description:
-        "JARVIS 2.0 Phone is the Android voice experience from Growth Guild Labs: local offline speech recognition, ghost avatar, floating HUD overlays — built as its own product.",
+        "JARVIS AI Phone is the next-generation personal AI agent from Growth Guild Labs: agentic planning, Android automation, offline Vosk speech, Vision AI, floating HUD toys, and Hinglish voice interaction.",
     },
     status: {
       state: "Official Android APK (v2.0.0)",
@@ -504,62 +484,77 @@ export const PRODUCTS: Product[] = [
     },
     featureGroups: [
       {
-        heading: "Offline by architecture",
+        heading: "🤖 Agentic Intelligence & Voice Automation",
         capabilities: [
           {
-            title: "Local speech recognition",
+            title: "🤖 Agentic AI Intelligence",
             detail:
-              "The APK ships a full Vosk “model-en-us” speech model (acoustic model, decoded grammar, ivector) — commands are transcribed on the phone, not streamed to a service.",
+              "Understand goals, plan multi-step workflows, and coordinate complex tasks. It moves beyond asking questions to helping you accomplish real tasks through natural conversation.",
           },
           {
-            title: "Speaker verification model",
+            title: "📱 Android App Automation",
             detail:
-              "A bundled “model-spk” (speaker model with transform functions) allows the app to model voices — a genuinely privacy-positive design.",
+              "Explore smarter ways to interact with your phone, manage applications, and streamline daily actions hands-free on Android.",
           },
           {
-            title: "Wake-first behaviour",
+            title: "🎙️ Natural Voice Control & Offline ASR",
             detail:
-              "Bundling local recognition means the phone assistant can listen locally first, and only escalate when needed.",
+              "Talk naturally with hands-free assistance. Ships a full offline Vosk 'model-en-us' speech model and 'model-spk' speaker recognition for privacy-first, on-device transcription.",
+          },
+          {
+            title: "👁️ Vision AI & Visual Scanning",
+            detail:
+              "Ask questions about images, scan visual information, and explore multimodal visual understanding directly from your camera.",
           },
         ],
       },
       {
-        heading: "A HUD in slots",
+        heading: "⚡ Smart Workflows & Communication",
         capabilities: [
           {
-            title: "Mark 85 Arc Core layer",
+            title: "💬 WhatsApp & Communication Intelligence",
             detail:
-              "A packaged assets/hud/index.html implements the “JARVIS — Mark 85 Arc Core” overlay — the same arc-reactor visual language as the desktop sibling, tuned for a smaller screen.",
+              "Explore message drafting, real-time translation, incoming text summarization, and supported communication workflows hands-free.",
           },
           {
-            title: "Overlay toys (yes, really)",
+            title: "🔔 Notification Intelligence",
             detail:
-              "16 bundled overlay toys — alien, blob, cat, droid, flower, ghost, hexagon, mech, pebble, star, triangle and friends — form an in-HUD companion set.",
+              "Stay informed with smarter notification handling, priority filtering, and instant contextual audio summaries.",
           },
           {
-            title: "The interactive ghost",
+            title: "📍 Location, Navigation & Reminders",
             detail:
-              "A bundled ghost-avatar web view hosts a reactive ghost character (with a mouth viseme) that reacts to mic events — the app's visual front-of-house.",
+              "Discover nearby places, navigate optimal routes, and organize smart location-based reminders with permission.",
+          },
+          {
+            title: "🎵 Media Control & Playback",
+            detail:
+              "Manage supported music and media playback functions through voice commands without touching the screen.",
+          },
+          {
+            title: "⚡ Live Task Progress & Verification",
+            detail:
+              "Track multi-step actions in real time, review progress logs, and verify completed automated steps before finalizing.",
           },
         ],
       },
       {
-        heading: "Built as its own product",
+        heading: "🎨 Futuristic UI & Privacy First",
         capabilities: [
           {
-            title: "Distinct from JARVIS 2.0",
+            title: "🌐 Multilingual Vision (Hindi, English, Hinglish)",
             detail:
-              "The phone package and the desktop package are separate deliverables with separate responsibilities — the phone build is a compact sibling, not a webview shell of the desktop app.",
+              "Designed with fluent Hindi, English, and Hinglish interaction in mind, with further language support expanding as development progresses.",
           },
           {
-            title: "Android-native tooling",
+            title: "🎨 Futuristic UI/UX & Mark 85 Arc HUD",
             detail:
-              "The APK bundles its own dex code with assets for speech, overlays, and the HUD — a genuinely Android-styled product rather than a port.",
+              "Modern interface with an interactive AI core, floating reactive Ghost avatar with viseme lip-sync, and 16 collectible in-HUD companion toys.",
           },
           {
-            title: "Part of the JARVIS family",
+            title: "🔐 Privacy First & User in Control",
             detail:
-              "Family DNA runs through both: the Mark 85 layers, the ghost avatar identity and the voice-first interaction model.",
+              "Permission-based access, clear activity indicators, and zero background audio streaming to the cloud when idle.",
           },
         ],
       },
@@ -614,11 +609,11 @@ export const PRODUCTS: Product[] = [
     imageCaption: "Logo artwork shipped inside the F.R.I.D.A.Y. Windows build.",
     chips: ["Windows", "Live voice", "Wake word", "Plugin-ready"],
     summary:
-      "F.R.I.D.A.Y. is the guild's always-on conversation: say “FRIDAY” and it wakes, then runs your computer — system control, research, file work and more — through a redrawing skill engine that can grow by dropping in a new file.",
+      "F.R.I.D.A.Y. is an advanced AI assistant designed for seamless computer control, information retrieval, and hands-free assistance. Wakes locally on 'FRIDAY', analyzes intent, extracts key entities, determines the optimal tool, and executes system commands, web/YouTube control, telemetry retrieval, and file processing.",
     seo: {
       title: "F.R.I.D.A.Y. AI — hands-free assistant that runs your computer",
       description:
-        "F.R.I.D.A.Y. AI is a working desk assistant from Growth Guild Labs: local wake word, Gemini Live conversation, computer control, research, plugins and a memory panel.",
+        "F.R.I.D.A.Y. AI is an advanced desk assistant from Growth Guild Labs: local wake word, Gemini Live voice, system control (volume, brightness, power, CPU/RAM/GPU), browser/YouTube, and self-extending plugins.",
     },
     status: {
       state: "Official Release (v1.0.0)",
@@ -626,117 +621,67 @@ export const PRODUCTS: Product[] = [
     },
     featureGroups: [
       {
-        heading: "Hands-free life",
+        heading: "⚡ Hands-Free Assistant & Intent Architecture",
         capabilities: [
           {
-            title: "Local “FRIDAY” wake word",
+            title: "Local “FRIDAY” Wake Word",
             detail:
-              "Sleeps until called: a bundled local detector runs in its own thread and, while asleep, your microphone spares the cloud entirely — wake is opt-in with a one-click download.",
+              "Sleeps until called: a bundled local detector runs in its own background thread. While asleep, your microphone spares the cloud entirely — wake is 100% on-device and private.",
           },
           {
-            title: "Designed to acknowledge",
+            title: "Statistical Patterns & Context-Aware Intent",
             detail:
-              "Speaks one contextual sentence the moment a task starts (“Right away — going through that file now.”) and then runs the tool, so silence never equals confusion.",
+              "Upon receiving a request via speech or text, FRIDAY analyzes intent, extracts key entities, selects the best specialized tool, and formats the response while preserving conversation context.",
           },
           {
-            title: "Session continuity",
+            title: "Designed to Acknowledge & Continuously Converse",
             detail:
-              "A dropped connection, a new microphone or a new voice no longer wipes the conversation — resumption handles are captured and replayed.",
-          },
-          {
-            title: "Unlimited sessions",
-            detail:
-              "Sliding-window context compression keeps a single conversation going for hours.",
+              "Speaks a contextual confirmation immediately as a task starts and handles reconnection smoothly with sliding-window context compression for hours of uninterrupted sessions.",
           },
         ],
       },
       {
-        heading: "Computer control",
+        heading: "🖥️ Seamless Computer Control & System Telemetry",
         capabilities: [
           {
-            title: "Real system commands",
+            title: "System Settings & Power Controls",
             detail:
-              "Via its computer_settings and desktop modules: volume, brightness, Wi-Fi, power shortcuts and keyboard/mouse/windows control by voice.",
+              "Adjust volume, screen brightness, Wi-Fi connectivity, and issue power shortcuts (sleep, restart, shutdown with safety confirmations) by voice.",
           },
           {
-            title: "Browser & YouTube",
+            title: "System Status Metrics (CPU, RAM, GPU)",
             detail:
-              "Dedicated browser_control and youtube_video actions handle navigation, playback and YouTube control by voice.",
+              "Retrieve real-time hardware telemetry and status metrics including processor load, memory utilization, and GPU diagnostics on demand.",
           },
           {
-            title: "A confirmation you can forge-proof",
+            title: "Web Browser & YouTube Interaction",
             detail:
-              "Shutdown, restart and Wi-Fi waits for a human button press — the model cannot confirm its own irreversible actions.",
+              "Interact with web browsers, search real-time information, open links, and navigate or control YouTube video playback directly with natural speech.",
           },
           {
-            title: "Undo it can take back",
+            title: "File Management & Processing Tasks",
             detail:
-              "Saying “undo” reverses what it did: moved or renamed files, created items, changed settings — with size and safety limits.",
+              "Manage local files and directories, summarize lengthy documents, convert media formats, and extract data with undo-safe operations.",
           },
         ],
       },
       {
-        heading: "Research & references",
+        heading: "🧠 Self-Extending Skills & Craft",
         capabilities: [
           {
-            title: "Multiple search modes",
+            title: "Self-Describing Plugin Engine",
             detail:
-              "Gemini-grounded search with a DuckDuckGo fallback, in news / research / price / compare / search modes.",
+              "Every action describes its own interface. Dropping a single Python file into the plugins folder immediately teaches FRIDAY a new skill.",
           },
           {
-            title: "Document reading",
+            title: "Recallable Long-Term Memory",
             detail:
-              "The file_processor action reads, summarises and answers questions about local files.",
+              "Budgeted core facts stay in active memory while full conversational histories are recallable on demand via a searchable local memory vault.",
           },
           {
-            title: "Morning briefing",
+            title: "Reactive Arc Reactor HUD & Voice Customization",
             detail:
-              "On first boot it greets you, reads the time, recaps yesterday and pulls live news — and remembers what it said at yesterday's session.",
-          },
-        ],
-      },
-      {
-        heading: "Memory & skills",
-        capabilities: [
-          {
-            title: "Recallable memory",
-            detail:
-              "Nothing is silently forgotten: the prompt carries a budgeted core of facts while the rest is searched locally on demand (a memory panel can view and delete every item).",
-          },
-          {
-            title: "Self-describing skills",
-            detail:
-              "Every bundled action describes itself in its own file, and dropping a single .py into plugins/ teaches FRIDAY a new tool — one-file tool growth.",
-          },
-          {
-            title: "Plugin surfaces",
-            detail:
-              "A plugin system with discovery, validation and crash isolation ships as part of the core.",
-          },
-        ],
-      },
-      {
-        heading: "Craft",
-        capabilities: [
-          {
-            title: "Reactive HUD",
-            detail:
-              "Waveform and arc-reactor core pulse to real audio; live theming recolours the whole HUD from a hue wheel or hex without a restart.",
-          },
-          {
-            title: "Voice picker",
-            detail:
-              "Choose among five native Gemini voices with live switching.",
-          },
-          {
-            title: "Audio device picker",
-            detail:
-              "Which microphone? FRIDAY's picker measures per-host-API latency and falls back gracefully when the saved device is gone.",
-          },
-          {
-            title: "Background monitoring",
-            detail:
-              "User-configured topic watching checks for new headlines once a day and alerts naturally.",
+              "Waveform and Arc Reactor core pulse to real-time audio with live hue recoloring and selection across 5 native Gemini voice personas.",
           },
         ],
       },
