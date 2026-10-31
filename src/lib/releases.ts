@@ -45,11 +45,9 @@ export const RELEASES: ReleaseArtifact[] = [
     fileSizeFormatted: "400.3 MB",
     sha256: "CF3314C87126BE06096AAF7FAEA91D7DEB54B664F7F9007D4EFFF14271F91137",
     executableName: "ULTRON2.exe",
-    downloadUrl: "#",
-    directDownloadAvailable: false,
-    hostingStatus: "mirror_pending",
-    hostingNotice:
-      "Packaged binary compiled and verified (400.3 MB). Awaiting public CDN/GitHub Releases mirror configuration (exceeds static host per-file limits). Direct link will activate when public mirror URL is attached.",
+    downloadUrl: "https://github.com/zaid-A1/growthguildlabs-website/releases/download/v1.0.0/ULTRON_2.0_Windows_x64.zip",
+    directDownloadAvailable: true,
+    hostingStatus: "available",
     systemRequirements: [
       "Windows 10 / 11 (64-bit)",
       "4 GB RAM minimum (8 GB recommended)",
@@ -57,7 +55,7 @@ export const RELEASES: ReleaseArtifact[] = [
       "Microphone and speaker for voice interface",
     ],
     installationSteps: [
-      "Download ULTRON_2.0_Windows_x64.zip once public mirror goes live.",
+      "Download ULTRON_2.0_Windows_x64.zip from the link above.",
       "Extract the entire ZIP archive to a folder of your choice.",
       "Open the folder and run ULTRON2.exe.",
       "The Quantum Core HUD desktop shell will launch automatically.",
@@ -117,11 +115,9 @@ export const RELEASES: ReleaseArtifact[] = [
     fileSizeFormatted: "228.7 MB",
     sha256: "22B9E290946A0EB8D862F065404541664DF27B19B038C42FF4AA6AA5BAF0CB6C",
     executableName: "JARVIS 2.0.exe",
-    downloadUrl: "#",
-    directDownloadAvailable: false,
-    hostingStatus: "mirror_pending",
-    hostingNotice:
-      "Packaged binary compiled and verified (228.7 MB). Awaiting public CDN/GitHub Releases mirror configuration (exceeds static host per-file limits). Direct link will activate when public mirror URL is attached.",
+    downloadUrl: "https://github.com/zaid-A1/growthguildlabs-website/releases/download/v1.0.0/JARVIS-2.0-Windows-x64.zip",
+    directDownloadAvailable: true,
+    hostingStatus: "available",
     systemRequirements: [
       "Windows 10 / 11 (64-bit)",
       "GPU with DirectX 11+ support for 3D avatar rendering",
@@ -129,7 +125,7 @@ export const RELEASES: ReleaseArtifact[] = [
       "Gemini API key for natural conversation",
     ],
     installationSteps: [
-      "Download JARVIS-2.0-Windows-x64.zip once public mirror goes live.",
+      "Download JARVIS-2.0-Windows-x64.zip from the link above.",
       "Extract the ZIP archive.",
       "Navigate into the 'JARVIS 2.0' folder and run 'JARVIS 2.0.exe'.",
       "Enter your Gemini API key in the configuration settings.",
@@ -188,18 +184,16 @@ export const RELEASES: ReleaseArtifact[] = [
     fileSizeFormatted: "253.0 MB",
     sha256: "DD3FFFC791D0D0FDFC371D365AA7167D26D7B918443AA9683BB61DD2EAE4C78B",
     executableName: "FRIDAY.exe",
-    downloadUrl: "#",
-    directDownloadAvailable: false,
-    hostingStatus: "mirror_pending",
-    hostingNotice:
-      "Packaged binary compiled and verified (253.0 MB). Awaiting public CDN/GitHub Releases mirror configuration (exceeds static host per-file limits). Direct link will activate when public mirror URL is attached.",
+    downloadUrl: "https://github.com/zaid-A1/growthguildlabs-website/releases/download/v1.0.0/FRIDAY_AI_v1.0_Windows.zip",
+    directDownloadAvailable: true,
+    hostingStatus: "available",
     systemRequirements: [
       "Windows 10 / 11 (64-bit)",
       "Working microphone and audio output",
       "Gemini API key (obtainable free from Google AI Studio)",
     ],
     installationSteps: [
-      "Download FRIDAY_AI_v1.0_Windows.zip once public mirror goes live.",
+      "Download FRIDAY_AI_v1.0_Windows.zip from the link above.",
       "Extract the ZIP archive.",
       "Open the 'FRIDAY/config' folder and open 'api_keys.json' in Notepad.",
       "Paste your Gemini API key: {\"gemini_api_key\": \"YOUR_KEY\", \"os_system\": \"windows\"} and save.",
