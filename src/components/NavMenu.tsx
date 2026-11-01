@@ -7,12 +7,10 @@ import { useEffect, useRef, useState } from "react";
 import { NAV_LINKS, SOCIAL_LINKS } from "@/lib/site";
 import { cn } from "@/lib/utils";
 import { AudioToggle } from "@/components/ui/AudioToggle";
-import { CommandPalette } from "@/components/ui/CommandPalette";
-import { sound } from "@/lib/soundFx";
+import { sound } from "@/lib/proceduralAudio";
 
 /**
- * Primary navigation with active-route indication, audio feedback,
- * Command Palette (Ctrl+K), and accessible mobile drawer.
+ * Primary navigation — active-route indication, Audio FX toggle, accessible mobile drawer.
  */
 export function NavMenu() {
   const pathname = usePathname();
@@ -20,7 +18,7 @@ export function NavMenu() {
   const panelRef = useRef<HTMLDivElement | null>(null);
   const toggleRef = useRef<HTMLButtonElement | null>(null);
 
-  // Escape closes, focus returns to the toggle
+  // Escape closes, focus returns to toggle
   useEffect(() => {
     if (!open) return;
     const onKey = (e: KeyboardEvent) => {
@@ -51,24 +49,18 @@ export function NavMenu() {
 
   return (
     <div className="flex items-center gap-3">
-      {/* Command Palette Trigger */}
-      <CommandPalette />
-
-      {/* Audio FX Toggle */}
+      {/* Audio FX Synth Toggle */}
       <AudioToggle />
 
       {/* Desktop nav links */}
-      <nav
-        aria-label="Primary"
-        className="hidden items-center gap-1 lg:flex"
-      >
+      <nav aria-label="Primary" className="hidden items-center gap-1 lg:flex">
         {NAV_LINKS.map((link) => (
           <Link
             key={link.href}
             href={link.href}
             aria-current={isActive(link.href) ? "page" : undefined}
-            onMouseEnter={() => sound.play("hover")}
-            onClick={() => sound.play("click")}
+            onMouseEnter={() => sound.playHover()}
+            onClick={() => sound.playClick()}
             className={cn(
               "relative rounded-full px-3.5 py-1.5 font-mono text-[0.72rem] uppercase tracking-[0.2em]",
               "transition-colors duration-300",
@@ -94,7 +86,7 @@ export function NavMenu() {
         ref={toggleRef}
         type="button"
         onClick={() => {
-          sound.play("click");
+          sound.playClick();
           setOpen((v) => !v);
         }}
         aria-expanded={open}
@@ -105,9 +97,7 @@ export function NavMenu() {
           "bg-void/70 text-ice-white transition-colors hover:border-cyan-electric/60 lg:hidden"
         )}
       >
-        <span aria-hidden="true" className="sr-only">
-          Menu
-        </span>
+        <span aria-hidden="true" className="sr-only">Menu</span>
         <span aria-hidden="true" className="relative block h-3 w-4.5">
           <span
             className={cn(
@@ -149,7 +139,7 @@ export function NavMenu() {
                     href={link.href}
                     aria-current={isActive(link.href) ? "page" : undefined}
                     onClick={() => {
-                      sound.play("click");
+                      sound.playClick();
                       setOpen(false);
                     }}
                     className={cn(
@@ -176,7 +166,7 @@ export function NavMenu() {
                 href={s.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                onClick={() => sound.play("click")}
+                onClick={() => sound.playClick()}
                 className="spec-chip"
               >
                 {s.platform}
@@ -189,7 +179,7 @@ export function NavMenu() {
   );
 }
 
-/** Header shell (client because the nav needs scroll state). */
+/** Header shell — scroll-aware glass effect. */
 export function SiteHeader() {
   const [scrolled, setScrolled] = useState(false);
   useEffect(() => {
@@ -218,11 +208,11 @@ export function SiteHeader() {
         >
           <Link
             href="/"
-            onClick={() => sound.play("click")}
+            onClick={() => sound.playClick()}
             className="group flex items-center gap-3"
             aria-label="Growth Guild Labs — home"
           >
-            {/* Brand mark — logo image with glow */}
+            {/* Brand mark */}
             <span className="relative flex items-center justify-center">
               <span
                 aria-hidden="true"

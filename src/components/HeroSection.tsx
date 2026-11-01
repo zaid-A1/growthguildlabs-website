@@ -2,30 +2,16 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import dynamic from "next/dynamic";
+import { Hologram3DCanvas } from "@/components/fx/Hologram3DCanvas";
+import { sound } from "@/lib/proceduralAudio";
 
-const ParticleField = dynamic(
-  () => import("@/components/fx/ParticleField").then((m) => m.ParticleField),
-  { ssr: false }
-);
-
-const ArcReactorCanvas = dynamic(
-  () => import("@/components/fx/ArcReactorCanvas").then((m) => m.ArcReactorCanvas),
-  { ssr: false }
-);
-
-/**
- * HeroSection — World-class AI company showcase
- * Apple × Marvel × Vercel aesthetic with triple glow rings, scan-lines, and deep space nebulas.
- */
 export function HeroSection() {
   return (
     <section
-      id="scene-01"
-      data-scene="Deep Space"
+      id="hero"
       className="relative flex min-h-screen w-full items-center justify-center overflow-hidden pt-28 pb-20 sm:pt-32 sm:pb-24"
     >
-      {/* ── Deep Space Background ── */}
+      {/* ── Deep Space Background Layers ── */}
       <div aria-hidden="true" className="absolute inset-0 z-0 pointer-events-none">
         <div
           className="absolute inset-0"
@@ -35,7 +21,7 @@ export function HeroSection() {
           }}
         />
 
-        {/* Nebula blob 1 — Cyan (Top left/center) */}
+        {/* Ambient Nebula Blobs */}
         <div
           className="nebula-blob"
           style={{
@@ -48,8 +34,6 @@ export function HeroSection() {
             animationDuration: "35s",
           }}
         />
-
-        {/* Nebula blob 2 — Violet (Bottom right) */}
         <div
           className="nebula-blob"
           style={{
@@ -63,13 +47,11 @@ export function HeroSection() {
             animationDuration: "42s",
           }}
         />
-
-        {/* Nebula blob 3 — Emerald Green (Center right) */}
         <div
           className="nebula-blob"
           style={{
-            width: "45vw",
-            height: "45vh",
+            width: "40vw",
+            height: "40vh",
             top: "25%",
             right: "5%",
             background:
@@ -80,117 +62,77 @@ export function HeroSection() {
         />
       </div>
 
-      {/* ── Cyber Grid ── */}
+      {/* Cyber Grid & Scanline */}
       <div aria-hidden="true" className="cyber-grid z-[1]" />
-
-      {/* ── Animated Scan Line across the Hero ── */}
       <div aria-hidden="true" className="scan-line z-[5]" />
 
-      {/* ── Ambient Particle Field ── */}
-      <div className="pointer-events-none absolute inset-0 z-[2]">
-        <ParticleField />
-      </div>
-
-      {/* ── Arc Reactor Decorative Canvases ── */}
-      <div
-        className="pointer-events-none absolute right-[-80px] top-1/2 -translate-y-1/2 z-[3] hidden xl:block opacity-25"
-        aria-hidden="true"
-      >
-        <ArcReactorCanvas size={580} color="#00e5ff" />
-      </div>
-      <div
-        className="pointer-events-none absolute left-[-60px] top-[18%] z-[3] hidden xl:block opacity-15"
-        aria-hidden="true"
-      >
-        <ArcReactorCanvas size={280} color="#7c5cff" />
-      </div>
-
-      {/* ── Vignette & Radial Focus Overlay ── */}
+      {/* Radial Vignette */}
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 z-[4]"
         style={{
           background:
-            "radial-gradient(ellipse 90% 80% at 50% 50%, transparent 35%, rgba(1,4,6,0.7) 100%)",
+            "radial-gradient(ellipse 90% 80% at 50% 50%, transparent 35%, rgba(1,4,6,0.65) 100%)",
         }}
       />
 
-      {/* ── Centered Hero Content ── */}
+      {/* ── Main Hero Content ── */}
       <div className="container-guild relative z-10 flex flex-col items-center text-center">
         <div className="hero-rise flex flex-col items-center gap-7 max-w-4xl">
 
-          {/* Large Centered Logo with Triple Glow Rings (Cyan, Violet, Green) */}
-          <div className="relative my-2 flex items-center justify-center">
-            {/* Outer Green Glow Ring */}
-            <div
-              className="glow-ring absolute size-40 sm:size-48 border border-emerald-400/20"
-              style={{
-                boxShadow: "0 0 35px rgba(0,255,136,0.15), inset 0 0 25px rgba(0,255,136,0.08)",
-                animationDuration: "4.5s",
-                animationDelay: "-1.5s",
-              }}
-            />
-            {/* Middle Violet Glow Ring */}
-            <div
-              className="glow-ring absolute size-32 sm:size-40 border border-violet-500/30"
-              style={{
-                boxShadow: "0 0 30px rgba(124,92,255,0.2), inset 0 0 20px rgba(124,92,255,0.1)",
-                animationDuration: "3.5s",
-                animationDelay: "-0.75s",
-              }}
-            />
-            {/* Inner Cyan Glow Ring */}
-            <div
-              className="glow-ring absolute size-24 sm:size-32 border border-cyan-electric/40"
-              style={{
-                boxShadow: "0 0 35px rgba(0,229,255,0.35), inset 0 0 25px rgba(0,229,255,0.2)",
-                animationDuration: "2.8s",
-              }}
-            />
+          {/* 3D WebGL Hologram Core Stage with Centered Logo */}
+          <div className="relative my-1 flex items-center justify-center">
+            {/* The 3D Interactive WebGL Hologram Canvas */}
+            <div className="relative z-10">
+              <Hologram3DCanvas size={280} color="#00e5ff" />
+            </div>
 
-            {/* Logo Core */}
-            <div className="relative z-10 size-18 sm:size-22 rounded-2xl bg-void/90 p-2.5 border border-cyan-electric/50 shadow-2xl backdrop-blur-xl">
+            {/* Centered Logo Badge floating inside the 3D Core */}
+            <div className="absolute z-20 pointer-events-none size-16 sm:size-20 rounded-2xl bg-void/80 p-2 border border-cyan-electric/50 shadow-[0_0_35px_rgba(0,229,255,0.4)] backdrop-blur-md flex items-center justify-center">
               <Image
                 src="/brand/growth-guild-labs-logo.png"
                 alt="Growth Guild Labs Logo"
-                width={80}
-                height={80}
-                className="size-full object-contain filter drop-shadow-[0_0_12px_rgba(0,229,255,0.8)]"
+                width={70}
+                height={70}
+                className="size-full object-contain filter drop-shadow-[0_0_12px_rgba(0,229,255,0.9)]"
                 priority
               />
             </div>
           </div>
 
-          {/* Hero Badge */}
-          <div className="hero-badge transition-all duration-300 hover:border-cyan-electric/50 hover:shadow-[0_0_20px_rgba(0,229,255,0.25)]">
+          {/* Hero Top Badge */}
+          <div
+            onMouseEnter={() => sound.playHover()}
+            className="hero-badge transition-all duration-300 hover:border-cyan-electric/60 hover:shadow-[0_0_25px_rgba(0,229,255,0.3)] cursor-default"
+          >
             <span className="text-sm">🚀</span>
-            <span>GROWTH GUILD LABS — BUILD MORE. GROW TOGETHER.</span>
+            <span>GROWTH GUILD LABS — ADVANCED AI ECOSYSTEM</span>
           </div>
 
-          {/* Giant Headline: "The Future Is Built. Not Waited For." */}
-          <h1 className="font-display text-[clamp(2.9rem,7.2vw,6.4rem)] font-extrabold tracking-tight text-ice-white leading-[1.03] text-balance">
+          {/* Giant Viral Headline */}
+          <h1 className="font-display text-[clamp(2.9rem,7vw,6.2rem)] font-extrabold tracking-tight text-ice-white leading-[1.03] text-balance">
             The Future Is{" "}
-            <span className="gradient-text-cyan font-black drop-shadow-[0_0_35px_rgba(0,229,255,0.4)]">
+            <span className="gradient-text-cyan font-black drop-shadow-[0_0_40px_rgba(0,229,255,0.45)]">
               Built.
             </span>
-            <span className="block text-mist/90 text-[0.62em] font-medium tracking-normal mt-2 sm:mt-3">
+            <span className="block text-mist/90 text-[0.6em] font-medium tracking-normal mt-2 sm:mt-3">
               Not Waited For.
             </span>
           </h1>
 
           {/* Subtext */}
           <p className="max-w-2xl font-sans text-lg sm:text-xl text-mist leading-relaxed font-light text-pretty">
-            5 working AI applications. 2 platforms. One independent guild.
+            Five production AI applications across Windows & Android. Built independently with PyQt6, Gemini Live voice engines, FastMCP tools, and 3D avatars.
           </p>
 
-          {/* Three Stats in a Row: 5 Apps | 2 Platforms | 56+ Tools */}
+          {/* 3 Stats Bar in glass card */}
           <div className="glass-card mt-2 grid w-full max-w-2xl grid-cols-3 divide-x divide-white/10 px-4 py-5 sm:px-8 sm:py-6">
             <div className="flex flex-col items-center gap-1.5 px-2">
               <span className="stat-number text-[#00e5ff] drop-shadow-[0_0_20px_rgba(0,229,255,0.5)]">
                 5
               </span>
               <span className="font-mono text-[0.68rem] uppercase tracking-[0.22em] text-mist/80">
-                Apps
+                AI Assistants
               </span>
             </div>
             <div className="flex flex-col items-center gap-1.5 px-2">
@@ -206,25 +148,28 @@ export function HeroSection() {
                 56+
               </span>
               <span className="font-mono text-[0.68rem] uppercase tracking-[0.22em] text-mist/80">
-                Tools
+                FastMCP Tools
               </span>
             </div>
           </div>
 
-          {/* Two CTA Buttons: Explore Ecosystem + Download Apps */}
+          {/* Action CTAs */}
           <div className="mt-3 flex flex-wrap items-center justify-center gap-4 sm:gap-6">
-            <Link
-              href="/ecosystem"
+            <a
+              href="#ecosystem-interactive"
+              onClick={() => sound.playClick()}
+              onMouseEnter={() => sound.playHover()}
               className="btn-neon font-bold text-sm tracking-[0.2em] px-8 py-3.5 shadow-lg"
             >
-              Explore Ecosystem
-              <span className="ml-1 text-base transition-transform group-hover:translate-x-1">→</span>
-            </Link>
+              Explore 3D Ecosystem →
+            </a>
             <Link
               href="/downloads"
+              onClick={() => sound.playClick()}
+              onMouseEnter={() => sound.playHover()}
               className="group relative inline-flex items-center justify-center gap-2 rounded-full border border-white/20 bg-white/5 px-8 py-3.5 font-mono text-[0.8rem] font-semibold uppercase tracking-[0.18em] text-ice-white backdrop-blur-md transition-all duration-300 hover:border-emerald-400/50 hover:bg-emerald-400/10 hover:text-emerald-300 hover:shadow-[0_0_25px_rgba(0,255,136,0.2)]"
             >
-              <span>Download Apps</span>
+              <span>Download Builds</span>
               <span className="text-xs transition-transform duration-300 group-hover:translate-y-0.5">↓</span>
             </Link>
           </div>
@@ -234,17 +179,17 @@ export function HeroSection() {
       {/* ── Scroll cue ── */}
       <div
         aria-hidden="true"
-        className="absolute bottom-6 left-1/2 -translate-x-1/2 hidden flex-col items-center gap-2 sm:flex z-10"
+        className="absolute bottom-6 left-1/2 -translate-x-1/2 hidden flex-col items-center gap-2 sm:flex z-10 pointer-events-none"
       >
         <span className="font-mono text-[0.62rem] uppercase tracking-[0.3em] text-muted-grey/70">
-          Scroll to explore
+          Scroll to explore 3D core
         </span>
         <span className="relative h-10 w-px overflow-hidden bg-white/10">
           <span className="absolute inset-x-0 top-0 h-3 animate-scan bg-cyan-electric/80" />
         </span>
       </div>
 
-      {/* ── Bottom gradient blend into next section ── */}
+      {/* Bottom gradient blend */}
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-x-0 bottom-0 z-[4] h-32"

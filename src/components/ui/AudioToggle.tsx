@@ -1,59 +1,51 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { sound } from "@/lib/soundFx";
+import { sound } from "@/lib/proceduralAudio";
 
 export function AudioToggle() {
-  const [enabled, setEnabled] = useState(false);
+  const [muted, setMuted] = useState(true);
 
   useEffect(() => {
-    const active = sound.isEnabled();
-    if (active) {
-      const raf = requestAnimationFrame(() => setEnabled(true));
-      return () => cancelAnimationFrame(raf);
-    }
+    setMuted(sound.getMuted());
   }, []);
 
   const handleToggle = () => {
-    const next = sound.toggle();
-    setEnabled(next);
+    const newMuted = sound.toggleMute();
+    setMuted(newMuted);
   };
 
   return (
     <button
       type="button"
       onClick={handleToggle}
-      className={`group relative inline-flex items-center gap-2 rounded-full border px-3 py-1.5 font-mono text-[0.66rem] uppercase tracking-[0.2em] transition-all duration-300 ${
-        enabled
-          ? "border-cyan-electric/60 bg-cyan-electric/10 text-cyan-electric shadow-[0_0_12px_rgba(0,229,255,0.25)]"
-          : "border-hairline bg-void/60 text-muted-grey hover:border-hairline-strong hover:text-mist"
+      className={`relative inline-flex items-center gap-2 rounded-full border px-3 py-1.5 font-mono text-[0.68rem] uppercase tracking-wider transition-all duration-300 ${
+        muted
+          ? "border-white/10 bg-white/5 text-muted-grey hover:border-white/20 hover:text-mist"
+          : "border-cyan-electric/50 bg-cyan-electric/10 text-cyan-electric shadow-[0_0_15px_rgba(0,229,255,0.25)]"
       }`}
-      aria-label={enabled ? "Mute HUD Sound Effects" : "Enable HUD Sound Effects"}
-      title={enabled ? "Mute HUD Audio FX" : "Enable Interactive HUD Audio FX"}
+      title={muted ? "Enable futuristic sci-fi sound FX" : "Mute audio effects"}
+      aria-label={muted ? "Enable audio effects" : "Mute audio effects"}
     >
-      <span className="relative flex h-3 w-3 items-center justify-between">
+      {/* Waveform indicator */}
+      <span className="flex items-center gap-0.5 h-3">
         <span
-          className={`h-full w-0.5 rounded-full transition-all duration-200 ${
-            enabled ? "animate-[soundbar_0.8s_ease-in-out_infinite] bg-cyan-electric" : "h-1 bg-muted-grey"
+          className={`w-0.5 rounded-full bg-current transition-all duration-300 ${
+            muted ? "h-1" : "h-3 animate-[pulse_0.8s_ease-in-out_infinite]"
           }`}
-          style={{ animationDelay: "0ms" }}
         />
         <span
-          className={`h-full w-0.5 rounded-full transition-all duration-200 ${
-            enabled ? "animate-[soundbar_0.6s_ease-in-out_infinite] bg-cyan-electric" : "h-2 bg-muted-grey"
+          className={`w-0.5 rounded-full bg-current transition-all duration-300 ${
+            muted ? "h-1" : "h-2 animate-[pulse_1.1s_ease-in-out_infinite_0.2s]"
           }`}
-          style={{ animationDelay: "150ms" }}
         />
         <span
-          className={`h-full w-0.5 rounded-full transition-all duration-200 ${
-            enabled ? "animate-[soundbar_0.9s_ease-in-out_infinite] bg-cyan-electric" : "h-1 bg-muted-grey"
+          className={`w-0.5 rounded-full bg-current transition-all duration-300 ${
+            muted ? "h-1" : "h-3.5 animate-[pulse_0.9s_ease-in-out_infinite_0.4s]"
           }`}
-          style={{ animationDelay: "300ms" }}
         />
       </span>
-      <span className="hidden sm:inline">
-        {enabled ? "AUDIO ON" : "AUDIO FX"}
-      </span>
+      <span>{muted ? "AUDIO OFF" : "SFX ACTIVE"}</span>
     </button>
   );
 }

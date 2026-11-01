@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useCallback, type ReactNode } from "react";
 import { cn } from "@/lib/utils";
-import { sound } from "@/lib/soundFx";
+import { sound } from "@/lib/proceduralAudio";
 
 type CtaVariant = "primary" | "secondary" | "ghost";
 
@@ -37,11 +37,9 @@ interface CtaLinkProps {
 }
 
 /**
- * Consistent call-to-action with a subtle magnetic pull on fine pointers:
+ * Consistent call-to-action with magnetic subtle pull on fine pointers:
  * the button leans a few pixels toward the cursor while it hovers, then
- * settles back. Keyboard and touch input are completely unaffected.
- * `external` opens in a new tab with the proper rel and announces the
- * behaviour in the accessible name.
+ * settles back. Procedural audio feedback on hover & click.
  */
 export function CtaLink({
   href,
@@ -75,11 +73,11 @@ export function CtaLink({
   }, []);
 
   const onPointerEnter = useCallback(() => {
-    sound.play("hover");
+    sound.playHover();
   }, []);
 
   const onClick = useCallback(() => {
-    sound.play("click");
+    sound.playClick();
   }, []);
 
   const inner = (

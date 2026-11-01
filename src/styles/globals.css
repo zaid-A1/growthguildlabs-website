@@ -110,6 +110,7 @@
     0%, 100% { transform: scaleY(0.25); }
     50% { transform: scaleY(1); }
   }
+  /* soundbar kept for potential future use */
   @keyframes marquee {
     0% { transform: translateX(0%); }
     100% { transform: translateX(-33.333333%); }
@@ -738,86 +739,11 @@
   }
 }
 
-/* ══════════════════════════════════════════════════════════════════════════
-   SCENE RAIL — journey scene navigation (home, wide viewports only)
-   ══════════════════════════════════════════════════════════════════════════ */
-
-.scene-rail {
-  position: fixed;
-  right: 1.5rem;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 30;
-  display: none;
-}
-@media (min-width: 1024px) {
-  .scene-rail {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 1rem;
-  }
-}
-.scene-rail a {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.7rem;
-  outline-offset: 6px;
-}
-.scene-rail .scene-rail-label {
-  font-family: var(--font-mono);
-  font-size: 0.58rem;
-  letter-spacing: 0.3em;
-  text-transform: uppercase;
-  color: var(--color-muted-grey);
-  opacity: 0;
-  transform: translateX(6px);
-  transition:
-    opacity 0.4s var(--ease-cinematic),
-    transform 0.4s var(--ease-cinematic),
-    color 0.3s;
-  pointer-events: none;
-}
-.scene-rail .scene-rail-dot {
-  height: 9px;
-  width: 9px;
-  border-radius: 9999px;
-  border: 1px solid #9baeb566;
-  background: transparent;
-  transition:
-    background 0.35s,
-    box-shadow 0.35s,
-    border-color 0.35s,
-    transform 0.35s var(--ease-cinematic);
-}
-.scene-rail a:hover .scene-rail-label,
-.scene-rail a:focus-visible .scene-rail-label,
-.scene-rail a[data-active="true"] .scene-rail-label {
-  opacity: 1;
-  transform: translateX(0);
-}
-.scene-rail a:hover .scene-rail-label,
-.scene-rail a:focus-visible .scene-rail-label {
-  color: var(--color-ice-white);
-}
-.scene-rail a[data-active="true"] .scene-rail-dot {
-  background: var(--color-cyan-electric);
-  border-color: var(--color-cyan-electric);
-  box-shadow: 0 0 12px #00e5ff88;
-  transform: scale(1.25);
-}
-.scene-rail a:hover .scene-rail-dot {
-  border-color: #00e5ffaa;
-}
-
 @media (prefers-reduced-motion: reduce) {
   .cursor-glow,
   .scroll-beam,
   .fx-grain {
     display: none;
-  }
-  .scene-rail a {
-    transition: none;
   }
 }
 
@@ -1150,30 +1076,4 @@
     linear-gradient(180deg, #02060a 0%, #03090d 100%);
 }
 
-/* ══════════════════════════════════════════════════════════════════════════
-   TERMINAL ENHANCEMENTS
-   ══════════════════════════════════════════════════════════════════════════ */
-
-.terminal-window {
-  border-radius: var(--radius-panel);
-  border: 1px solid rgba(0,229,255,0.25);
-  background: rgba(2,6,10,0.95);
-  overflow: hidden;
-  box-shadow:
-    0 32px 80px rgba(0,0,0,0.7),
-    0 0 0 1px rgba(0,229,255,0.1),
-    inset 0 0 60px rgba(0,229,255,0.03);
-}
-.terminal-titlebar {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.75rem 1.25rem;
-  border-bottom: 1px solid rgba(0,229,255,0.15);
-  background: rgba(0,229,255,0.04);
-}
-.terminal-dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 9999px;
-}
+/* terminal-window styles removed — TerminalConsole component deleted */
