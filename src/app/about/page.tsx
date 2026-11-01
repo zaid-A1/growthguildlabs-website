@@ -19,19 +19,19 @@ export const metadata: Metadata = buildMetadata({
 
 const PRINCIPLES = [
   {
-    icon: "🛠️",
+    icon: "⚙️",
     title: "Built, not promised",
     detail:
       "Every entry in the ecosystem runs as packaged software today. Product pages describe verified capability — what ships inside the package — not hypothetical roadmaps or speculative intentions.",
   },
   {
-    icon: "🏛️",
+    icon: "🔷",
     title: "Separate products, separate identities",
     detail:
       "Five applications, five architectures, five names. The Connector is not ULTRON rebadged, and the Phone is not JARVIS wrapped in a webview. Each has its own codebase, runtime, and dedicated responsibility.",
   },
   {
-    icon: "🛡️",
+    icon: "✅",
     title: "Availability, stated honestly",
     detail:
       "All five applications are built, packaged, and publicly downloadable. The Download Center carries every build with verified SHA-256 checksums, exact file sizes, and installation instructions — nothing is claimed that cannot be executed.",
@@ -44,6 +44,27 @@ const PRINCIPLES = [
   },
 ];
 
+const FOUNDERS = [
+  {
+    name: "Zaid Uddin",
+    role: "CEO & Founder",
+    accent: "#00e5ff",
+    accentGlow: "rgba(0,229,255,0.3)",
+    bio: "Lead architect across all five products. Built the PyQt6 voice pipeline, FastMCP plugin engine, Three.js HUD layers, autonomous skill codegen system, and multi-session memory architecture that powers the guild.",
+    tags: ["PyQt6", "FastMCP", "Three.js", "Voice AI", "Python"],
+    initial: "Z",
+  },
+  {
+    name: "Idrees Uddin",
+    role: "Co-Founder",
+    accent: "#7c5cff",
+    accentGlow: "rgba(124,92,255,0.3)",
+    bio: "Systems engineering & gateway bridging. Designed the WebSocket companion gateway, Android pairing protocol, cross-platform release pipeline, and hardware-sensor integration layer.",
+    tags: ["Systems", "WebSocket", "Android", "Hardware", "Gateway"],
+    initial: "I",
+  },
+];
+
 export default function AboutPage() {
   return (
     <>
@@ -52,7 +73,6 @@ export default function AboutPage() {
         <div aria-hidden="true" className="absolute inset-0 page-hero-bg" />
         <div aria-hidden="true" className="cyber-grid opacity-[0.025]" />
 
-        {/* Dynamic Nebulas */}
         <div
           aria-hidden="true"
           className="nebula-blob"
@@ -90,7 +110,7 @@ export default function AboutPage() {
                 alt="Growth Guild Labs Logo"
                 width={76}
                 height={76}
-                className="relative rounded-2xl border border-cyan-electric/50 bg-void/90 p-2 nav-logo-glow"
+                className="relative rounded-2xl border border-cyan-electric/50 bg-void/90 p-2"
                 priority
               />
             </div>
@@ -110,144 +130,113 @@ export default function AboutPage() {
           </h1>
 
           <blockquote className="glass-card max-w-3xl border-l-4 border-l-cyan-electric p-6 text-lg sm:text-xl leading-relaxed text-ice-white font-light">
-            &ldquo;Exploring AI, software, and digital experiences that push ideas
-            beyond the ordinary.&rdquo;
+            &ldquo;Exploring AI, software, and digital experiences that push ideas beyond the ordinary.&rdquo;
           </blockquote>
-
-          <p className="max-w-3xl text-base sm:text-lg leading-relaxed text-mist font-light">
-            That statement is the project&apos;s guiding thesis — preserved here
-            because it embodies the engineering spirit better than any corporate jargon could.
-            Growth Guild Labs operates on transparency, shipping working code, and building durable software tools.
-          </p>
         </div>
       </section>
 
-      {/* ── People Behind Growth Guild Labs: Premium with Gradient Borders ── */}
-      <section className="relative z-10 border-t border-hairline py-28 bg-void/40">
-        <div className="container-guild">
-          <Reveal>
-            <SectionHeading
-              eyebrow="LEADERSHIP & ENGINEERING"
-              title="Who Builds Growth Guild Labs"
-              lead="The identity is written where the products are: the shipped applications name their makers directly. Growth Guild Labs is the independent guild created by Zaid Uddin and Idrees Uddin."
-            />
-          </Reveal>
-
-          <div className="mt-14 grid gap-8 sm:grid-cols-2">
-            {[
-              {
-                name: "Zaid Uddin",
-                role: "CEO & Founder",
-                initials: "ZU",
-                accent: "#00E5FF",
-                desc: "Lead system architect, PyQt6 core designer, and AI voice pipeline builder behind ULTRON 2.0, JARVIS 2.0, and F.R.I.D.A.Y.",
-                note: "Sourced directly from the shipped executable manifests and protocol configurations.",
-              },
-              {
-                name: "Idrees Uddin",
-                role: "Co-founder",
-                initials: "IU",
-                accent: "#7C5CFF",
-                desc: "Systems engineering, companion gateway bridging, hardware integration, and testing lead for the Android companion builds.",
-                note: "Architect of the local pairing protocols and mobile telemetry sensor bridges.",
-              },
-            ].map((person, i) => (
-              <Reveal key={person.name} delay={i * 120} className="h-full">
-                <div
-                  className="app-card h-full flex flex-col justify-between gap-10 p-8 sm:p-10 border transition-all duration-500 hover:scale-[1.01]"
-                  style={{
-                    borderColor: `${person.accent}44`,
-                    boxShadow: `0 20px 50px rgba(0,0,0,0.5), 0 0 30px ${person.accent}12`,
-                  }}
-                >
-                  <div className="flex items-center justify-between gap-4">
-                    <span
-                      aria-hidden="true"
-                      className="grid size-16 place-items-center rounded-2xl border font-display text-xl font-bold shadow-lg"
-                      style={{
-                        borderColor: `${person.accent}66`,
-                        backgroundColor: `${person.accent}15`,
-                        color: person.accent,
-                        boxShadow: `0 0 20px ${person.accent}25`,
-                      }}
-                    >
-                      {person.initials}
-                    </span>
-                    <span
-                      className="platform-pill border font-semibold"
-                      style={{
-                        borderColor: `${person.accent}55`,
-                        color: person.accent,
-                        backgroundColor: `${person.accent}10`,
-                      }}
-                    >
-                      {person.role}
-                    </span>
-                  </div>
-
-                  <div>
-                    <h3 className="font-display text-3xl font-extrabold text-ice-white">
-                      {person.name}
-                    </h3>
-                    <p
-                      className="mt-1 font-mono text-xs uppercase tracking-[0.24em] font-semibold"
-                      style={{ color: person.accent }}
-                    >
-                      {person.role} // GROWTH GUILD LABS
-                    </p>
-                    <p className="mt-4 text-base leading-relaxed text-mist font-light">
-                      {person.desc}
-                    </p>
-                    <p className="mt-4 text-xs leading-relaxed text-muted-grey border-t border-white/10 pt-4">
-                      {person.note}
-                    </p>
-                  </div>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── Principles: Icon + Text Layout ── */}
-      <section className="relative z-10 border-t border-hairline py-28 relative overflow-hidden">
+      {/* ── Founders Section ── */}
+      <section className="relative py-28 border-t border-hairline overflow-hidden">
         <div
           aria-hidden="true"
           className="nebula-blob"
           style={{
-            width: "55vw",
+            width: "60vw",
             height: "40vh",
-            top: "10%",
-            right: "-10%",
-            background: "radial-gradient(ellipse, rgba(0,255,136,0.07) 0%, transparent 70%)",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+            background: "radial-gradient(ellipse, rgba(0,229,255,0.06) 0%, transparent 70%)",
           }}
         />
-
         <div className="container-guild relative z-10">
-          <Reveal className="max-w-3xl">
-            <SectionHeading
-              eyebrow="ENGINEERING PHILOSOPHY"
-              title="Our Guiding Principles"
-              lead="These are not corporate values written for a brochure — they are the rigid technical constraints every application in the guild is built under."
-            />
+          <Reveal className="flex flex-col items-center text-center gap-4 mb-16">
+            <span className="eyebrow">THE BUILDERS</span>
+            <h2 className="font-display text-3xl sm:text-5xl font-extrabold text-ice-white">
+              Meet the Guild
+            </h2>
+            <p className="max-w-xl text-base sm:text-lg text-mist font-light leading-relaxed">
+              Two engineers. Every line of code, every voice pipeline, every HUD layer — built and shipped by this team.
+            </p>
           </Reveal>
 
-          <div className="mt-16 grid gap-6 md:grid-cols-2">
-            {PRINCIPLES.map((principle, i) => (
-              <Reveal key={principle.title} delay={i * 80} className="h-full">
-                <div className="app-card h-full p-8 flex flex-col justify-between gap-6 hover:border-cyan-electric/40">
-                  <div className="flex items-start gap-4">
-                    <span className="text-3xl p-3 rounded-2xl bg-white/5 border border-white/10 shrink-0">
-                      {principle.icon}
-                    </span>
+          <div className="grid gap-8 md:grid-cols-2 max-w-4xl mx-auto">
+            {FOUNDERS.map((founder) => (
+              <Reveal key={founder.name}>
+                <div
+                  className="relative overflow-hidden rounded-3xl border bg-panel p-8 flex flex-col gap-6 transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_0_60px_var(--f-glow)]"
+                  style={
+                    {
+                      borderColor: `${founder.accent}33`,
+                      "--f-glow": founder.accentGlow,
+                    } as React.CSSProperties
+                  }
+                >
+                  {/* Corner radial glow */}
+                  <div
+                    className="absolute top-0 right-0 w-48 h-48 rounded-bl-full opacity-15"
+                    style={{
+                      background: `radial-gradient(circle at top right, ${founder.accent}, transparent)`,
+                    }}
+                  />
+
+                  {/* Top accent line */}
+                  <div
+                    className="absolute inset-x-0 top-0 h-0.5 rounded-t-3xl"
+                    style={{
+                      background: `linear-gradient(90deg, transparent, ${founder.accent}, transparent)`,
+                    }}
+                  />
+
+                  {/* Avatar + Name */}
+                  <div className="flex items-center gap-5">
+                    <div
+                      className="relative size-16 rounded-2xl flex items-center justify-center text-2xl font-display font-black border"
+                      style={{
+                        background: `radial-gradient(circle, ${founder.accent}22, transparent)`,
+                        borderColor: `${founder.accent}44`,
+                        color: founder.accent,
+                        boxShadow: `0 0 20px ${founder.accent}33`,
+                      }}
+                    >
+                      {founder.initial}
+                    </div>
                     <div>
-                      <h3 className="font-display text-xl font-bold text-ice-white">
-                        {principle.title}
+                      <h3
+                        className="font-display text-xl font-bold text-ice-white"
+                        style={{ textShadow: `0 0 20px ${founder.accent}55` }}
+                      >
+                        {founder.name}
                       </h3>
-                      <p className="mt-3 text-sm leading-relaxed text-mist font-light">
-                        {principle.detail}
+                      <p
+                        className="font-mono text-[0.72rem] uppercase tracking-widest mt-0.5"
+                        style={{ color: founder.accent }}
+                      >
+                        {founder.role}
                       </p>
                     </div>
+                  </div>
+
+                  {/* Bio */}
+                  <p className="text-sm leading-relaxed text-mist font-light">
+                    {founder.bio}
+                  </p>
+
+                  {/* Tech tags */}
+                  <div className="flex flex-wrap gap-2 mt-auto">
+                    {founder.tags.map((tag) => (
+                      <span
+                        key={tag}
+                        className="rounded-full border px-3 py-1 font-mono text-[0.65rem] uppercase tracking-wider"
+                        style={{
+                          borderColor: `${founder.accent}33`,
+                          color: founder.accent,
+                          background: `${founder.accent}0d`,
+                        }}
+                      >
+                        {tag}
+                      </span>
+                    ))}
                   </div>
                 </div>
               </Reveal>
@@ -256,9 +245,53 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ── What We Build: Direct Links ── */}
-      <section className="relative z-10 border-t border-hairline py-24 bg-void/50">
-        <div className="container-guild">
+      {/* ── Guild Principles ── */}
+      <section className="relative py-28 border-t border-hairline overflow-hidden">
+        <div
+          aria-hidden="true"
+          className="nebula-blob"
+          style={{
+            width: "50vw",
+            height: "35vh",
+            top: "-10%",
+            right: "-5%",
+            background: "radial-gradient(ellipse, rgba(124,92,255,0.07) 0%, transparent 70%)",
+            animationDelay: "-20s",
+          }}
+        />
+        <div className="container-guild relative z-10">
+          <Reveal className="flex flex-col items-center text-center gap-4 mb-16">
+            <span className="eyebrow">HOW WE WORK</span>
+            <h2 className="font-display text-3xl sm:text-5xl font-extrabold text-ice-white">
+              Guild Principles
+            </h2>
+          </Reveal>
+
+          <div className="grid gap-6 sm:grid-cols-2 max-w-5xl mx-auto">
+            {PRINCIPLES.map((p, i) => (
+              <Reveal key={p.title} delay={i * 80}>
+                <div className="group relative rounded-2xl border border-hairline bg-panel p-8 flex flex-col gap-4 transition-all duration-300 hover:border-cyan-electric/30 hover:-translate-y-0.5 hover:shadow-[0_0_40px_rgba(0,229,255,0.08)]">
+                  <div
+                    className="absolute inset-x-0 top-0 h-px rounded-t-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                    style={{ background: "linear-gradient(90deg, transparent, #00e5ff, transparent)" }}
+                  />
+                  <span className="text-3xl">{p.icon}</span>
+                  <h3 className="font-display text-xl font-bold text-ice-white group-hover:text-cyan-electric transition-colors duration-300">
+                    {p.title}
+                  </h3>
+                  <p className="text-sm leading-relaxed text-mist/90 font-light">
+                    {p.detail}
+                  </p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── Products strip ── */}
+      <section className="relative py-28 border-t border-hairline overflow-hidden">
+        <div className="container-guild relative z-10">
           <Reveal>
             <SectionHeading
               eyebrow="THE SHIPPED ARTIFACTS"
@@ -300,7 +333,6 @@ export default function AboutPage() {
                         </span>
                       </div>
                     </div>
-
                     <div className="flex items-center gap-4">
                       <span className="hidden sm:inline-flex spec-chip text-xs">
                         {p.chips[0]}
@@ -320,7 +352,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ── Contact & Social Channels ── */}
+      {/* ── Contact & Social ── */}
       <section
         className="relative z-10 border-t border-hairline py-28 overflow-hidden text-center"
         style={{ background: "radial-gradient(ellipse 90% 80% at 50% 50%, #061922 0%, #02070b 60%, #010305 100%)" }}

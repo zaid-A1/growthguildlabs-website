@@ -6,6 +6,7 @@ import { Reveal } from "@/components/ui/Reveal";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { StatusBadge } from "@/components/ui/StatusBadge";
 import { ProductsJSONLD } from "@/components/seo/ProductsJSONLD";
+import { InteractiveEcosystemShowcase } from "@/components/ui/InteractiveEcosystemShowcase";
 import { PRODUCTS, ACCENTS, productHref } from "@/lib/products";
 import { buildMetadata } from "@/lib/seo";
 
@@ -113,6 +114,13 @@ export default function EcosystemPage() {
               );
             })}
           </Reveal>
+        </div>
+      </section>
+
+      {/* ── Interactive 3D Ecosystem Showcase ── */}
+      <section className="relative py-20 border-b border-hairline overflow-hidden bg-void/40">
+        <div className="container-guild">
+          <InteractiveEcosystemShowcase />
         </div>
       </section>
 

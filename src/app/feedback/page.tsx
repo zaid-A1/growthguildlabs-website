@@ -12,11 +12,11 @@ export const metadata: Metadata = buildMetadata({
 });
 
 const USEFUL_TOPICS = [
-  { label: "Bug reports & telemetry" },
-  { label: "AI skill creation requests" },
-  { label: "Companion pairing feedback" },
-  { label: "Release priority requests" },
-  { label: "Hardware & sensor suggestions" },
+  { icon: "🐛", label: "Bug reports & telemetry" },
+  { icon: "🧠", label: "AI skill creation requests" },
+  { icon: "📡", label: "Companion pairing feedback" },
+  { icon: "🚀", label: "Release priority requests" },
+  { icon: "🔩", label: "Hardware & sensor suggestions" },
 ];
 
 export default function FeedbackPage() {
@@ -49,73 +49,74 @@ export default function FeedbackPage() {
               Direct channels that work.
             </span>
           </h1>
-          <p className="max-w-2xl text-lg leading-relaxed text-mist">
-            Growth Guild Labs prioritizes real interactions over simulated web forms.
-            Reach the creators directly on verified social channels.
+          <p className="max-w-xl text-base sm:text-lg text-mist font-light leading-relaxed">
+            No contact form exists here yet — and none will be faked. Every real route
+            to the builders is listed below.
           </p>
         </div>
       </section>
 
-      {/* ── Honest status ── */}
-      <section className="pb-24 relative">
-        <div className="container-guild flex flex-col gap-6">
-          <Reveal className="holo-card p-8 sm:p-10">
-            <div className="flex items-center gap-2 mb-2">
-              <span className="size-2 rounded-full bg-neon-green animate-pulse" aria-hidden="true" />
-              <p className="font-mono text-micro uppercase tracking-[0.28em] text-neon-green">
-                Direct Communication Philosophy
-              </p>
-            </div>
-            <p className="max-w-3xl text-[15px] leading-relaxed text-mist">
-              This website is a modern static build — there is no backend database collecting your
-              personal info, and no simulated forms that disappear into the void. Instead, we provide
-              direct, verified routes to talk to the creators, test builds, and report telemetry.
-            </p>
-            <p className="max-w-3xl text-[15px] leading-relaxed text-mist mt-2">
-              Every message sent through our official social media channels reaches Zaid Uddin and
-              Idrees Uddin directly.
-            </p>
+      {/* ── Useful topics ── */}
+      <section className="py-20 border-t border-hairline">
+        <div className="container-guild max-w-3xl mx-auto">
+          <Reveal className="flex flex-col items-center text-center gap-4 mb-12">
+            <span className="eyebrow">TOPICS WE ACTUALLY RESPOND TO</span>
+            <h2 className="font-display text-2xl sm:text-3xl font-bold text-ice-white">
+              What to send us
+            </h2>
           </Reveal>
 
-          {/* Social routes */}
-          <Reveal delay={100} className="holo-card p-8 sm:p-10">
-            <div className="flex flex-col gap-6">
-              <span className="eyebrow">VERIFIED DIRECT ROUTES</span>
-              <h2 className="font-display text-[1.6rem] text-ice-white">
-                Connect with Growth Guild Labs
-              </h2>
-              <SocialLinks />
-            </div>
-          </Reveal>
-
-          {/* Useful feedback topics */}
-          <Reveal delay={160} className="holo-card p-8 sm:p-10">
-            <div className="flex flex-col gap-5">
-              <span className="eyebrow">VALUABLE TOPICS</span>
-              <div className="flex flex-wrap gap-2">
-                {USEFUL_TOPICS.map((t) => (
-                  <span key={t.label} className="spec-chip spec-chip--lit">
+          <div className="grid gap-4 sm:grid-cols-2">
+            {USEFUL_TOPICS.map((t, i) => (
+              <Reveal key={t.label} delay={i * 70}>
+                <div className="group flex items-center gap-4 rounded-2xl border border-hairline bg-panel px-6 py-5 transition-all duration-300 hover:border-cyan-electric/30 hover:bg-cyan-electric/[0.04] hover:-translate-y-0.5">
+                  <span className="text-2xl">{t.icon}</span>
+                  <span className="font-display text-sm font-semibold text-ice-white group-hover:text-cyan-electric transition-colors">
                     {t.label}
                   </span>
-                ))}
-              </div>
-              <p className="max-w-3xl text-[15px] leading-relaxed text-mist">
-                The ecosystem is actively evolving. Feedback on autonomous skill generation,
-                Vosk offline recognition accuracy, companion gateway latency, and new feature
-                suggestions are the most impactful contributions you can make today.
-              </p>
-            </div>
-          </Reveal>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
 
-          <Reveal delay={200} className="flex flex-wrap gap-4 mt-4">
-            <CtaLink href="/downloads" ariaLabel="Download application packages">
-              Download the apps
+      {/* ── Social channels ── */}
+      <section
+        className="relative py-28 border-t border-hairline overflow-hidden text-center"
+        style={{ background: "radial-gradient(ellipse 80% 70% at 50% 50%, #061922 0%, #02070b 60%)" }}
+      >
+        <div
+          aria-hidden="true"
+          className="nebula-blob"
+          style={{
+            width: "55vw",
+            height: "40vh",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+            background: "radial-gradient(ellipse, rgba(0,229,255,0.07) 0%, transparent 70%)",
+          }}
+        />
+        <div className="container-guild relative z-10 flex flex-col items-center gap-8 max-w-2xl mx-auto">
+          <Reveal className="flex flex-col items-center gap-3">
+            <span className="hero-badge">REACH THE GUILD</span>
+            <h2 className="font-display text-3xl sm:text-4xl font-bold text-ice-white">
+              Live Channels
+            </h2>
+            <p className="text-sm sm:text-base text-mist font-light leading-relaxed">
+              These are the verified places where Zaid and Idrees actively read messages and post updates.
+            </p>
+          </Reveal>
+          <Reveal delay={80}>
+            <SocialLinks />
+          </Reveal>
+          <Reveal delay={140} className="flex flex-wrap justify-center gap-4">
+            <CtaLink href="/ecosystem" ariaLabel="Explore the ecosystem">
+              Explore the Ecosystem
             </CtaLink>
-            <CtaLink href="/ecosystem" variant="secondary" ariaLabel="Explore the ecosystem">
-              Explore the ecosystem
-            </CtaLink>
-            <CtaLink href="/privacy" variant="ghost" ariaLabel="Read the privacy statement">
-              Privacy statement
+            <CtaLink href="/downloads" variant="secondary" ariaLabel="Download Center">
+              Download Center
             </CtaLink>
           </Reveal>
         </div>

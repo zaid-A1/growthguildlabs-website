@@ -31,6 +31,17 @@ export default function NotFound() {
         }}
       />
 
+      {/* Scan line animation */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-x-0 top-0 h-full overflow-hidden opacity-[0.04]"
+      >
+        <div
+          className="absolute inset-x-0 h-32 animate-scan"
+          style={{ background: "linear-gradient(180deg, transparent, rgba(0,229,255,0.6), transparent)" }}
+        />
+      </div>
+
       <div className="container-guild relative z-10 flex flex-col items-center gap-8 text-center">
         {/* HUD frame: error code */}
         <div className="relative">
@@ -40,7 +51,7 @@ export default function NotFound() {
 
           <div
             className="relative mt-4 overflow-hidden rounded-2xl border border-[#ff174433] bg-[#0a0c0e] px-12 py-8"
-            style={{ boxShadow: "0 0 60px rgba(255,23,68,0.08)" }}
+            style={{ boxShadow: "0 0 60px rgba(255,23,68,0.08), inset 0 0 40px rgba(255,23,68,0.03)" }}
           >
             {/* Accent line top */}
             <div
@@ -51,7 +62,7 @@ export default function NotFound() {
 
             <p
               className="font-display text-[6rem] font-bold leading-none tracking-tighter sm:text-[8rem]"
-              style={{ color: "#ff1744", textShadow: "0 0 40px #ff174460" }}
+              style={{ color: "#ff1744", textShadow: "0 0 40px #ff174460, 0 0 80px #ff174420" }}
             >
               404
             </p>
@@ -96,10 +107,19 @@ export default function NotFound() {
               <li key={p.id}>
                 <Link
                   href={`/products/${p.id}`}
-                  className="group flex items-center gap-3 rounded-xl border border-hairline bg-void/60 px-4 py-2.5 text-sm text-mist transition-colors hover:border-cyan-electric/40 hover:text-ice-white"
+                  className="group flex items-center gap-3 rounded-xl border border-hairline bg-void/60 px-4 py-2.5 text-sm text-mist transition-all hover:border-cyan-electric/40 hover:text-ice-white hover:bg-cyan-electric/5"
                 >
-                  <span className="font-mono text-[0.6rem] text-muted-grey">→</span>
+                  <span
+                    className="size-2 rounded-full shrink-0"
+                    style={{
+                      background:
+                        p.accent === "gold" ? "#FFD700" :
+                        p.accent === "cyan" ? "#00E5FF" :
+                        p.accent === "red" ? "#FF1744" : "#7C5CFF",
+                    }}
+                  />
                   {p.name}
+                  <span className="ml-auto font-mono text-xs text-muted-grey group-hover:text-cyan-electric transition-colors">→</span>
                 </Link>
               </li>
             ))}

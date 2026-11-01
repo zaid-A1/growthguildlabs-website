@@ -6,7 +6,6 @@ import { ProductPageJSONLD } from "@/components/seo/ProductPageJSONLD";
 import {
   ACCENTS,
   PRODUCTS,
-  productHref,
   getProduct,
 } from "@/lib/products";
 import { productMetadata } from "@/lib/seo";
@@ -14,6 +13,7 @@ import {
   ProductHero,
   ProductSections,
   HudPanel,
+  SpecTable,
   ProductDownloadSection,
   RelatedStrip,
 } from "./product-sections";
@@ -33,10 +33,6 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
   return productMetadata(product);
 }
 
-/**
- * One product route, five distinct data-driven compositions.
- * All product copy/claims come from lib/products.ts (the single source).
- */
 export default async function ProductPage({ params }: Params) {
   const { slug } = await params;
   const product = getProduct(slug);
@@ -48,7 +44,7 @@ export default async function ProductPage({ params }: Params) {
     <>
       <ProductPageJSONLD product={product} />
 
-      {/* ── Hero (unique layout per product) ── */}
+      {/* ── Hero with 3D hologram ── */}
       <ProductHero product={product} accent={accent} />
 
       {/* ── Honest status strip ── */}
@@ -71,61 +67,36 @@ export default async function ProductPage({ params }: Params) {
         </div>
       </section>
 
-      {/* ── Verified capability grid (per-product grouping) ── */}
+      {/* ── Verified capability grid ── */}
       <section className="py-24">
         <div className="container-guild">
           <ProductSections product={product} accent={accent} />
         </div>
       </section>
 
-      {/* ── Real UI artefacts ── */}
-      {product.hud && product.hud.length > 0 && (
-        <section className="border-t border-hairline bg-[linear-gradient(180deg,#03090d,#071d24_160%)] py-24">
-          <div className="container-guild">
-            <HudPanel product={product} accent={accent} />
-          </div>
-        </section>
-      )}
+      {/* ── HUD showcase ── */}
+      <HudPanel product={product} accent={accent} />
 
-      {/* ── Ecosystem bridge ── */}
-      {product.bridge && (
-        <section className="py-20">
-          <div className="container-guild">
-            <div
-              className="panel flex flex-col gap-4 p-8 sm:flex-row sm:items-center sm:justify-between"
-              style={{ borderColor: `${accent.color}33` }}
-            >
-              <div className="max-w-2xl">
-                <p
-                  className="font-mono text-micro uppercase tracking-[0.28em]"
-                  style={{ color: accent.color }}
-                >
-                  Inside the ecosystem
-                </p>
-                <h2 className="mt-3 font-display text-[1.45rem] text-ice-white">
-                  {product.bridge.title}
-                </h2>
-                <p className="mt-3 text-[15px] leading-relaxed text-mist">
-                  {product.bridge.detail}
-                </p>
-              </div>
-              <CtaLink
-                href={productHref(product.bridge.partnerId)}
-                variant="secondary"
-                className="shrink-0 self-start sm:self-auto"
-              >
-                Open the partner page
-              </CtaLink>
-            </div>
-          </div>
-        </section>
-      )}
+      {/* ── Tech spec table ── */}
+      <SpecTable product={product} accent={accent} />
 
-      {/* ── Official Download Section ── */}
+      {/* ── Download section ── */}
       <ProductDownloadSection product={product} accent={accent} />
 
-      {/* ── Related + next action ── */}
-      <RelatedStrip product={product} accent={accent} />
+      {/* ── Related products ── */}
+      <RelatedStrip product={product} />
+
+      {/* ── Final CTA ── */}
+      <section className="py-20 border-t border-hairline text-center">
+        <div className="container-guild flex flex-col items-center gap-6">
+          <p className="font-mono text-[0.72rem] uppercase tracking-widest text-muted-grey">
+            {product.nextAction.note}
+          </p>
+          <CtaLink href={product.nextAction.href} ariaLabel={product.nextAction.label}>
+            {product.nextAction.label}
+          </CtaLink>
+        </div>
+      </section>
     </>
   );
 }
